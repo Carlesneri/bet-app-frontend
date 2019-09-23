@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav class="navbar Navbar">
+        <span>
+          <img className="star" src="./images/star.png" alt="star"></img>
+        </span>
+        <span>
+          <button id="btn-iniciar" className="btn btn-outline-info iniciar">
+            Iniciar
+          </button>
+        </span>
+        <span>
+          <img className="admin-icon" src="https://useiconic.com/open-iconic/svg/dashboard.svg" alt="admin-icon"></img>
+        </span>
+      </nav>      
+      <ul className='list-group container mt-2' id="partidos">
+      </ul>
     </div>
   );
 }
