@@ -1,0 +1,8 @@
+.cuota {
+  margin: 2px 1px;
+  padding: 0 3px 0 3px;
+  border-radius: 3px;
+  grid-row: 1/2;
+  width: 45px;
+  font-weight: 700;
+}

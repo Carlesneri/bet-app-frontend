@@ -1,0 +1,23 @@
+.cuota-list {
+    padding: 0;
+    margin: 0;
+
+}
+
+.card-partido{
+    border: none;
+    margin: 5px; 
+    padding: 20px;
+    box-shadow: 1px 1px 5px rgb(200, 200, 200);
+    min-width: 45em;
+    
+}
+
+.card-title{
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+.button{
+    size: small;
+}
