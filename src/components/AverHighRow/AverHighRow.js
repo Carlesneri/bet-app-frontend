@@ -3,39 +3,56 @@ import Cuota from "../Cuota/Cuota.js";
 import "./AverHighRow.css";
 
 const AverHighRow = ({ aver, high, percent }) => {
-
-  var cuotaAverAnt = aver[0].cuota
-  var cuotaHighAnt = high[0].cuota
-  var percentStyle = {fontSize: Math.round(percent)*-2+5}
-
-  return (
-    <div className="aver-high-percent-row">
-      <div className="aver-title">Aver:</div>
-      <div className="aver-cuota-list">
-        {
-        aver.map(data => {     
-          const style = getStyle(data.cuota, cuotaAverAnt);         
-          cuotaAverAnt = data.cuota;
-          return <Cuota key={data.time} cuota={data.cuota} style={style}/>;
-        })}
-      </div>
-      <div className="high-title">High:</div>
-      <div className="high-cuota-list">
-        {high.map(data => {
-          const style = getStyle(data.cuota, cuotaHighAnt);         
-          cuotaHighAnt = data.cuota;
-          return <Cuota key={data.time} cuota={data.cuota} style={style}/>;
-        })}
-      </div>
-      <div className="percent" style={percentStyle}>{percent}</div>
-    </div>
-  );
-
-  function getStyle(cuota, cuotaAnt){
-      if  (cuota < cuotaAnt) return 'green'
-      if (cuota > cuotaAnt) return 'red' 
-      return 'black'
+  
+  var percentStyle = {fontSize: Math.round(percent)*-1*2.5};
+  
+  function getStyle(type, index){   
+    if  (index > 0) {
+      switch(type){
+        case 'aver':
+          if (aver[index].cuota < aver[index - 1].cuota) return 'green';
+          if (aver[index].cuota > aver[index - 1].cuota) return 'red'
+          break;
+        case 'high': 
+          if (high[index].cuota < high[index - 1].cuota) return 'green';
+          if (high[index].cuota > high[index - 1].cuota) return 'red';
+          break;
+        default: break;
+      }
+    }
+    return 'black' 
   }
+
+  if(aver.length || high.length){
+    return (
+      <div>
+        <div className="aver-high-percent-row">
+          <div className="aver-title">Average</div>
+          <div className="aver-cuota-list">
+            {aver.map((data, index) => {     
+              const style = getStyle('aver', index);         
+              //cuotaAverAnt = data.cuota;
+              return <Cuota key={data.time} cuota={data.cuota} style={style}/>;
+            })}
+          </div>
+          <div className="high-title">Highest</div>
+          <div className="high-cuota-list">
+            {high.map((data, index) => {
+              const style = getStyle('high', index);         
+              //cuotaHighAnt = data.cuota;
+              return <Cuota key={data.time} cuota={data.cuota} style={style}/>;
+            })}
+          </div>
+          <div className="percent" style={percentStyle}>{percent}</div>
+        </div>
+        <div>
+          <hr />
+        </div>
+      </div>
+    );
+  }
+  else return null;
+  
 };
 
 
