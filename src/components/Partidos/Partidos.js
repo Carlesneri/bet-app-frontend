@@ -1,32 +1,35 @@
 import React, { Component } from "react";
-import Partido from '../Partido/Partido';
-import './Partidos.css'
+import Partido from "../Partido/Partido";
+import "./Partidos.css";
+
 
 class Partidos extends Component {
-
-  render() {
-    const MIN_PERCENT = -4.5;
-    const {partidos} = this.props
+    
+    render() {
+      const MIN_PERCENT = 4.5;
+      const { partidos } = this.props;
+      var hayPartidos = 'No hay partidos que mostrar';
     
 
-    if(partidos !== []){
-      return(
-        <div id='Partidos' className="partidos">
-          { 
-            partidos.map( (partido, index) => {
-              if(partido.percent1 < MIN_PERCENT || partido.percent2 < MIN_PERCENT || partido.percent2 < MIN_PERCENT){
+    return (
+      <>
+        <div id="Partidos" className="partidos">
+          {partidos.map((partido, index) => {
+            if (partido.percent1 > MIN_PERCENT ||
+                partido.percent2 > MIN_PERCENT ||
+                partido.percent2 > MIN_PERCENT){
+              hayPartidos = '';
               return <Partido key={index} partido={partido} />;
-              } else return null;
-            })
-          }
-        </div>  
-      )
-    }
-    return <div><h1>Sin partidos aun!. Añadir spinner.</h1></div>
-    
-    
+            }
+            return null;
+          })}
+        </div>
+        <div className='noPartidos'>
+          <h1>{hayPartidos}</h1>
+        </div>
+      </>
+    );
   }
-        
 }
 
 export default Partidos;

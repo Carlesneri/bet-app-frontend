@@ -26,6 +26,7 @@ class App extends Component {
         let percent3 = 0;
         const name = match.val().name;
         const url = match.val().url;
+        const last = match.val().last;
         dbOP.child(name + "/aver1").once("value", snapChild => {
           snapChild.forEach(data => {
             const cuota = data.val().cuota;
@@ -76,6 +77,7 @@ class App extends Component {
         newState.partidos.push({
           name,
           url,
+          last,
           aver1,
           aver2,
           aver3,
@@ -96,15 +98,15 @@ class App extends Component {
     const lastHighI = high.length - 1;
     const averCuota = aver[lastAverI] ? aver[lastAverI].cuota : 1;
     const highCuota = high[lastHighI] ? high[lastHighI].cuota : 1;
-    return Math.round(1000 * (1 / highCuota - 1 / averCuota)) / 10;
+    return Math.round(1000 * -1 * (1 / highCuota - 1 / averCuota)) / 10;
   }
 
   render() {
     const { partidos } = this.state;
 
     partidos.sort((a, b) => {
-      const aMax = Math.max(a.percent1*-1, a.percent2*-1, a.percent3*-1);
-      const bMax = Math.max(b.percent1*-1, b.percent2*-1, b.percent3*-1);
+      const aMax = Math.max(a.percent1, a.percent2, a.percent3);
+      const bMax = Math.max(b.percent1, b.percent2, b.percent3);
       return bMax - aMax;
     })
 

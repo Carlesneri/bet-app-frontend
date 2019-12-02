@@ -4,7 +4,7 @@ import "./AverHighRow.css";
 
 const AverHighRow = ({ aver, high, percent }) => {
   
-  var percentStyle = {fontSize: Math.round(percent)*-1*2.5};
+  var percentStyle = {fontSize: Math.round(percent) * 2.5};
   
   function getStyle(type, index){   
     if  (index > 0) {
@@ -32,7 +32,7 @@ const AverHighRow = ({ aver, high, percent }) => {
             {aver.map((data, index) => {     
               const style = getStyle('aver', index);         
               //cuotaAverAnt = data.cuota;
-              return <Cuota key={data.time} cuota={data.cuota} style={style}/>;
+              return <Cuota key={data.time} time={data.time} cuota={data.cuota} style={style}/>;
             })}
           </div>
           <div className="high-title">Highest</div>
@@ -40,7 +40,7 @@ const AverHighRow = ({ aver, high, percent }) => {
             {high.map((data, index) => {
               const style = getStyle('high', index);         
               //cuotaHighAnt = data.cuota;
-              return <Cuota key={data.time} cuota={data.cuota} style={style}/>;
+              return <Cuota key={data.time} time={data.time} cuota={data.cuota} style={style}/>;
             })}
           </div>
           <div className="percent" style={percentStyle}>{percent}</div>

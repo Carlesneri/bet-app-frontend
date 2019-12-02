@@ -1,3 +1,11 @@
 .partidos{
     padding: 10px 5px;
+    justify-content: center;
+}
+
+.noPartidos{
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+    
 }
