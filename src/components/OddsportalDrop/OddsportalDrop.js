@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Partidos from "../Partidos/Partidos";
-import dbOP from "../../database";
+import db  from "../../database";
+
+const dbOP = db.child("oddsportal");
 
 class OddsportalDrop extends Component {
   constructor() {
