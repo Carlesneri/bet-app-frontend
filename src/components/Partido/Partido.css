@@ -3,8 +3,7 @@
     border-radius: 0;
     margin: 10px auto 5px 10px; 
     padding: 20px 10px 10px 10px;
-    box-shadow: 1px 1px 1px white;
-    width: 45em;
+    width: 100%;
 }
 
 .card-title{

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Card, Container } from "react-bootstrap";
 import "./Partido.css";
 import AverHighRow from "../AverHighRow/AverHighRow";
-import link from './link.ico';
-import eye from './eye.ico';
+import link from '../../images/link.ico';
+import eye from '../../images/eye.ico';
 
 class Partido extends Component {
 
@@ -36,7 +36,6 @@ class Partido extends Component {
     const eyeStyle = {width: eyeSize + 'px'};
 
     return (
-      
       <Container>
         <Card className="card-partido">
           <Card.Title className="card-title">

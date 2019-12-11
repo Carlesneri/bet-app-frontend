@@ -5,12 +5,11 @@ import "./Partidos.css";
 
 class Partidos extends Component {
     
-    render() {
-      const MIN_PERCENT = 4.5;
-      const { partidos } = this.props;
-      var hayPartidos = 'No hay partidos que mostrar';
+  render() {
+    const MIN_PERCENT = 4.5;
+    const { partidos } = this.props;
+    var hayPartidos = 'No hay partidos que mostrar';
     
-
     return (
       <>
         <div id="Partidos" className="partidos">
