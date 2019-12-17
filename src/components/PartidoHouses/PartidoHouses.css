@@ -2,12 +2,12 @@
     border: none;
     border-radius: 0;
     margin: 10px auto 5px 10px; 
-    padding: 20px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
 }
-
 .card-title-houses{
+    align-items: center;
     display: grid;
-    grid-template-columns: auto 50px;
+    grid-template-columns: 50px auto 50px;
     margin: 0;
     padding: 0;
 }
@@ -25,12 +25,14 @@
 }
 .house-cuota{
     display: grid;
-    grid-template-columns: 70px 50px 50px;
+    grid-template-columns: 50% 20% 30%;
+    margin: 0;
+    padding: 0;
 }
 .home-draw-away{
     align-items: center;
     display: grid;
-    grid-template-columns: 60% 30%;
+    grid-template-columns: 75% 25%;
     border: solid 1px rgb(212, 212, 212);
     border-radius: 15px;
     padding: 10px;
@@ -39,4 +41,7 @@
 .subs-cuota{
     text-align: center;
     font-size: 1.5em;
+}
+.eye-ico-houses{
+    width: 1.5em;
 }
