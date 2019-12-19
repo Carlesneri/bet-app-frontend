@@ -16,7 +16,7 @@ class Partido extends Component {
   
   render() {
     
-    const NUM_CUOTAS = 10;
+    const NUM_CUOTAS = 8;
     
     var { 
       aver1, aver2, aver3, high1, high2, high3, 

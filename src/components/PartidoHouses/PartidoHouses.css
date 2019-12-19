@@ -45,3 +45,12 @@
 .eye-ico-houses{
     width: 1.5em;
 }
+
+@media (max-width: 600px){
+    .card-body-houses{
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        width: 200px;
+    }
+}

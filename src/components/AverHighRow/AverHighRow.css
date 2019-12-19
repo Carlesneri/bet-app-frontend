@@ -5,7 +5,7 @@ hr{
 }
 .aver-high-percent-row {
   display: grid;
-  grid-template-columns: 100px 70% auto;
+  grid-template-columns: 70px auto auto;
   grid-template-rows: 1fr 1fr;
 }
 .aver-title {
@@ -15,6 +15,7 @@ hr{
 .aver-cuota-list {
   opacity: 0.8;
   display: flex;
+  justify-content: center;
   grid-column: 2/3;
   grid-row: 1/2;
 }
@@ -25,6 +26,7 @@ hr{
 .high-cuota-list {
   opacity: 0.8;
   display: flex;
+  justify-content: center;
   grid-column: 2/3;
   grid-row: 2/3;
 }

@@ -3,6 +3,7 @@ import { Container, Card } from "react-bootstrap";
 import "./PartidoHouses.css";
 import link from '../../images/link.ico';
 import eye_ico from '../../images/eye.ico'
+import "../PartidosHouses/PartidosHouses"
 
 class PartidoHouses extends Component {
     constructor(props){
@@ -11,18 +12,18 @@ class PartidoHouses extends Component {
             partido : {
                 ...this.props.partido,
                 visible: true
-            }  
+            },
         }
     }
     
     hide(partido){
+        //this.props.styleHandlerBlock()
         partido.visible = false
         this.setState(partido)
     }
     
     render(){
-        
-        const { partido } = this.state;       
+        const { partido } = this.state;
         var localKeys = [];
         var drawKeys = [];
         var visKeys = [];
@@ -31,6 +32,7 @@ class PartidoHouses extends Component {
         if(partido.cuotaVisitante) visKeys = Object.keys(partido.cuotaVisitante);
         const href_link = "https://www.oddsportal.com/search/" + partido.local;
         if(partido.visible && (partido.subsCuotaLocal > 4 || partido.subsCuotaDraw > 4 || partido.subsCuotaVis > 4)){
+            //this.props.styleHandlerNone()
             return (
                 <Container>
                     <Card className="card-partido-houses">
