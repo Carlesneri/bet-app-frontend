@@ -12,22 +12,23 @@ hr{
   grid-column: 1/2;
   grid-row: 1/2;
 }
-.aver-cuota-list {
-  opacity: 0.8;
-  display: flex;
-  justify-content: center;
-  grid-column: 2/3;
-  grid-row: 1/2;
-}
 .high-title {
   grid-column: 1/2;
   grid-row: 2/3;
 }
-.high-cuota-list {
-  opacity: 0.8;
+.aver-cuota-list, .high-cuota-list {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  opacity: 0.8;
   grid-column: 2/3;
+  margin: 0;
+  padding: 0;
+}
+.aver-cuota-list {
+  grid-row: 1/2;
+}
+.high-cuota-list {
   grid-row: 2/3;
 }
 .percent {
@@ -35,7 +36,7 @@ hr{
   grid-row: 1/3;
   display: flex;
   text-align: right;
-  justify-content: center;
+  justify-content: center; 
   flex-direction: column;
   font-weight: 500; 
 }

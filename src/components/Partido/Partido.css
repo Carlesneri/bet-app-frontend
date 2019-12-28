@@ -1,18 +1,18 @@
 .card-partido{
     border: none;
     border-radius: 0;
-    margin: 10px auto 5px 10px; 
-    padding: 20px 10px 10px 10px;
-    width: auto;
-    min-width: 500px;
+    margin-top: 10px; 
+    padding: 10px;
 }
 
 .card-title{
     text-align: center;
-    display: grid;
-    grid-template-columns: 50px auto 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* grid-template-columns: 50px auto 50px; */
+    padding: 0; 
     margin: 0;
-    padding: 0;
 }
 .link-ico{
     margin: 5px;
@@ -22,5 +22,4 @@
 .card-body{
     margin: 10px;
     padding: 0;
-
 }
