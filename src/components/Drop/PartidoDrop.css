@@ -1,0 +1,53 @@
+.card-partido{
+    margin-right: auto;
+    margin-left: auto;
+    border: none;
+    border-radius: 0;
+    margin-top: 10px; 
+    padding: 10px;
+}
+
+.card-title{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* grid-template-columns: 50px auto 50px; */
+    padding: 0; 
+    margin: 0;
+}
+.link-ico{
+    margin: 5px;
+    width: 1em;
+    font-size: 1em;
+}
+.card-body{
+    margin: 10px;
+    padding: 0;
+}
+.cuotas-local, .cuotas-draw, .cuotas-visitante{
+    display: inline-block;
+    align-items: center;
+}
+.local, .draw, .visitante{
+    display: flex;
+}
+.cuotas{
+    display: inline-flex;
+    padding: 2px;
+}
+.cuota{
+    text-align: left;
+    margin: 0 10px 0 0;
+    padding:0;
+}
+.drop{
+    margin: 0;
+    text-align: right;
+    padding: 0;
+}
+.total-drop{
+    text-align: right;
+    margin-left: auto;
+    align-self: center;
+}
