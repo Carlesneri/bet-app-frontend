@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import OddsportalDrop from '../OddsportalDrop/OddsportalDrop';
-import Houses from '../Houses/Houses'
+import Drop from '../Drop/Drop'
 import { Tabs, Tab }from 'react-bootstrap';
 import "./App.css";
 
@@ -8,14 +8,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Tabs className='tabs' defaultActiveKey="OddsportalDrop" id="uncontrolled-tab-example">
-          <Tab eventKey="OddsportalDrop" title="OddsportalDrop">
+        <Tabs className='tabs' defaultActiveKey="Comparator" id="uncontrolled-tab-example">
+          <Tab className="OddsP-Tab" eventKey="Comparator" title="Comparator">
             <OddsportalDrop />
           </Tab>
-          <Tab eventKey="Houses" title="Houses">
-            <h1>
-                <Houses />
-            </h1>
+          <Tab eventKey="Drops" title="Drops">
+            <Drop />
           </Tab>
         </Tabs>
       </div>

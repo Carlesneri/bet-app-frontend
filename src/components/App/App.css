@@ -1,4 +1,16 @@
 .tabs{
-    margin-top: 10px;
+    padding-top: 10px;
     justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+a{
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+}
+a:visited{
+  color: #5433FF;
 }
