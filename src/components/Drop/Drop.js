@@ -89,7 +89,7 @@ class Drop extends Component{
 
     render(){ 
         const {partidos} = this.state
-        return <PartidosDrop partidos={partidos} />        
+        return <h1>Partidos</h1>//<PartidosDrop partidos={partidos} />        
     }
 }
 
