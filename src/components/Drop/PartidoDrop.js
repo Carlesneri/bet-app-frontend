@@ -6,7 +6,7 @@ import './PartidoDrop.css'
 class PartidoDrop extends Component{
 
     render(){        
-        const {partido} = this.props        
+        const {partido} = this.props                        
         const href_link_op_local = "https://www.oddsportal.com/search/" + partido.local
         const href_link_op_visitante = "https://www.oddsportal.com/search/" + partido.visitante
         
@@ -36,7 +36,7 @@ class PartidoDrop extends Component{
                             <div className="local">
                                 <div className="cuotas-local">
                                     {partido.cuotasLocal.map((cuotaObj, index) => {
-                                        const cuota = cuotaObj.cuota
+                                        const cuota = cuotaObj.cuota                                       
                                         let dropSpan = ''
                                         if(index < partido.localDrop.length){
                                             dropSpan = partido.localDrop[index]
@@ -45,10 +45,10 @@ class PartidoDrop extends Component{
                                             <div className="cuotas" key={index}>
                                                 <span>
                                                     <div className="cuota">
-                                                        {String(cuota)}
+                                                        {cuota}
                                                     </div>
                                                     <div className="drop">
-                                                        {String(dropSpan)}
+                                                        {dropSpan}
                                                     </div>
                                                 </span>
                                             </div>
@@ -72,10 +72,10 @@ class PartidoDrop extends Component{
                                             <div className="cuotas" key={index}>
                                                 <span>
                                                     <div className="cuota">
-                                                        {String(cuota)}
+                                                        {cuota}
                                                     </div>
                                                     <div className="drop">
-                                                        {String(dropSpan)}
+                                                        {dropSpan}
                                                     </div>
                                                 </span>
                                             </div>
@@ -99,10 +99,10 @@ class PartidoDrop extends Component{
                                             <div className="cuotas" key={index}>
                                                 <span>
                                                     <div className="cuota">
-                                                        {String(cuota)}
+                                                        {cuota}
                                                     </div>
                                                     <div className="drop">
-                                                        {String(dropSpan)}
+                                                        {dropSpan}
                                                     </div>
                                                 </span>
                                             </div>
