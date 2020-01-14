@@ -1,12 +1,9 @@
 .partidos{
     padding: 10px 5px;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .noPartidos{
     text-align: center;
     color: white;
     margin-top: 50px;
-    
 }

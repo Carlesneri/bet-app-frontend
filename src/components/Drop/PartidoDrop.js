@@ -8,8 +8,8 @@ class PartidoDrop extends Component{
     render(){        
         const {partido} = this.props                        
         const href_link_op_local = "https://www.oddsportal.com/search/" + partido.local
-        const href_link_op_visitante = "https://www.oddsportal.com/search/" + partido.visitante
-        
+        const href_link_op_visitante = "https://www.oddsportal.com/search/" + partido.visitante        
+
         return (
             <Container>
                 <Card className="card-partido">

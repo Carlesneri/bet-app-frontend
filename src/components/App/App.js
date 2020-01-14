@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import OddsportalDrop from '../OddsportalDrop/OddsportalDrop';
-//import Drop from '../Drop/Drop'
+import Drop from '../Drop/Drop'
 import { Tabs, Tab }from 'react-bootstrap';
 import "./App.css";
 
@@ -12,9 +12,9 @@ class App extends Component {
           <Tab className="OddsP-Tab" eventKey="Comparator" title="Comparator">
             <OddsportalDrop />
           </Tab>
-          {/* <Tab eventKey="Drops" title="Drops">
+          <Tab eventKey="Drops" title="Drops">
             <Drop />
-          </Tab> */}
+          </Tab>
         </Tabs>
       </div>
     );
