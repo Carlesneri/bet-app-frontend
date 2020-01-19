@@ -6,7 +6,7 @@ import './PartidoDrop.css'
 class PartidoDrop extends Component{
 
     render(){        
-        const {partido} = this.props                        
+        const {partido} = this.props      
         const href_link_op_local = "https://www.oddsportal.com/search/" + partido.local
         const href_link_op_visitante = "https://www.oddsportal.com/search/" + partido.visitante        
 
@@ -35,8 +35,7 @@ class PartidoDrop extends Component{
                         <div className="home-draw-away">
                             <div className="local">
                                 <div className="cuotas-local">
-                                    {partido.cuotasLocal.map((cuotaObj, index) => {
-                                        const cuota = cuotaObj.cuota                                       
+                                    {partido.cuotaLocal.map((cuota, index) => {
                                         let dropSpan = ''
                                         if(index < partido.localDrop.length){
                                             dropSpan = partido.localDrop[index]
@@ -62,8 +61,7 @@ class PartidoDrop extends Component{
                             <hr></hr>
                             <div className="draw">
                                 <div className="cuotas-draw">
-                                    {partido.cuotasDraw.map((cuotaObj, index) => {
-                                        const cuota = cuotaObj.cuota
+                                    {partido.cuotaDraw.map((cuota, index) => {
                                         let dropSpan = ''
                                         if(index < partido.drawDrop.length){
                                             dropSpan = partido.drawDrop[index]
@@ -89,8 +87,7 @@ class PartidoDrop extends Component{
                             <hr></hr>
                             <div className="visitante">
                                 <div className="cuotas-visitante">
-                                    {partido.cuotasVisitante.map((cuotaObj, index) => {
-                                        const cuota = cuotaObj.cuota
+                                    {partido.cuotaVisitante.map((cuota, index) => {
                                         let dropSpan = ''
                                         if(index < partido.visitanteDrop.length){
                                             dropSpan = partido.visitanteDrop[index]

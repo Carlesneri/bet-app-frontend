@@ -1,19 +1,19 @@
 hr{
   margin: 0;
   padding: 0;
-
 }
 .aver-high-percent-row {
   display: flex;
-}
-.aver-high-row{
-  width: 80%;
+  justify-content: space-between;
+  
 }
 .aver-row, .high-row{
   display: flex;
 }
 .aver-title, .high-title{
+  margin-right: 5px;
   width: 60px;
+
 }
 .aver-cuota-list, .high-cuota-list {
   display: flex;
