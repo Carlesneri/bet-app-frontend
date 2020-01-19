@@ -6,7 +6,7 @@ import "./Partidos.css";
 class Partidos extends Component {
     
   render() {
-    const MIN_PERCENT = 4.5;
+    const MIN_PERCENT = 3.5;
     const { partidos } = this.props;
     var hayPartidos = 'No hay partidos que mostrar';
     
