@@ -1,0 +1,9 @@
+.partidos-drop-container{
+    display: flex;
+} 
+.partidos-drop{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 60px;
+    justify-content: center;
+}
