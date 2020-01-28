@@ -1,19 +1,18 @@
-.card-partido{
-    margin-right: auto;
-    margin-left: auto;
-    border: none;
-    border-radius: 0;
-    margin-top: 10px; 
-    padding: 10px;
-}
-
-.card-title{
-    text-align: center;
+.partido{
+    padding: 20px;
+    width: fit-content;
+}       
+.partido-title{
+    font-size: 1.3em;
+    margin: 0 10px;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    /* grid-template-columns: 50px auto 50px; */
-    padding: 0; 
+    justify-content: center;
+}
+.partido-title div{
+    margin: 0 10px;   
+}
+.partido-name{
+    cursor: pointer;
     margin: 0;
 }
 .link-ico{
@@ -21,19 +20,16 @@
     width: 1em;
     font-size: 1em;
 }
-.card-body{
-    margin: 10px;
-    padding: 0;
-}
 .local, .draw, .visitante{
     display: flex;
 }
 .cuotas-local, .cuotas-draw, .cuotas-visitante{
+    font-size: 0.8em;
+    margin: 0 20px 0 0;
     display: flex;
-    justify-content: center;
-    width: 80%;
 }
 .cuotas{
+    color: #95a5a6;
     display: inline-flex;
     text-align: center;
     padding: 2px;
@@ -49,10 +45,9 @@
     padding: 0;
 }
 .total-drop{
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 600;
     display: flex;
-    width: 20%;
     justify-content: center;
     align-items: center;
 }

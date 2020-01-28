@@ -11,6 +11,8 @@ class OddsportalDrop extends Component {
       partidos: []
     };
 
+  }
+  componentDidMount(){
     dbOP.on("value", snap => {
       const newState = {
         partidos: []
@@ -94,7 +96,9 @@ class OddsportalDrop extends Component {
       this.setState(newState);
     });
   }
-
+  componentWillUnmount(){
+    dbOP.off();
+  }
   getPercent(aver, high) {
     const lastAverI = aver.length - 1;
     const lastHighI = high.length - 1;
@@ -113,7 +117,7 @@ class OddsportalDrop extends Component {
     })
 
     return (
-      <div id="OddsportalDrop" className="oddsportal-drop">
+      <div>
         <Partidos partidos={partidos} />
       </div>
     );

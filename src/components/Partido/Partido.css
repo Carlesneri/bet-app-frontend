@@ -1,27 +1,55 @@
-.card-partido{
-    display: flex;
-    max-width: 90vh;
+.partido{
+    margin: 0px 0 ;
     width: fit-content;
-    border: none;
-    border-radius: 0;
-    margin-top: 10px; 
-    padding: 0px;
-}
-
-.card-title{
-    text-align: center;
+}       
+.partido-title{
+    font-size: 1.3em;
+    margin: 0 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0; 
+    justify-content: center;
+}
+.partido-title div{
+    margin: 0 10px;   
+}
+.partido-name{
     margin: 0;
 }
-.link-ico{
-    margin: 5px;
-    width: 1em;
-    font-size: 1em;
+.minAgoText{
+  font-weight: normal;
+  margin: 0;
 }
-.card-body{
-
-    padding: 0;
-}
+.parpadeo{
+    animation-name: parpadeo;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  
+    -webkit-animation-name:parpadeo;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+  }
+  
+  @-moz-keyframes parpadeo{
+    0% { opacity: 0}
+    1%{ opacity: 1}
+    50% { opacity: 1}
+    51% {opacity: 0}
+    100% {opacity: 0}
+  }
+  
+  @-webkit-keyframes parpadeo {
+    0% { opacity: 0}
+    1%{ opacity: 1}
+    50% { opacity: 1}
+    51% {opacity: 0}
+    100% {opacity: 0}
+  }
+  
+  @keyframes parpadeo {
+    0% { opacity: 0}
+    1% { opacity: 1}
+    50% { opacity: 1}
+    51% {opacity: 0}
+    100% {opacity: 0}
+  }

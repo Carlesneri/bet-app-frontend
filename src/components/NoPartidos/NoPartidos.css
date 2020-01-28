@@ -1,6 +1,8 @@
-.no_partidos{
-    padding: 60px;
+.no-partidos-container{
     display: flex;
+}
+.no_partidos {
     justify-content: center;
     color: white;
+    margin: 25vh auto;
 }

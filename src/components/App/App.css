@@ -1,16 +1,14 @@
-.tabs{
-    padding-top: 10px;
-    justify-content: center;
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-
 a{
-    color: black;
+    cursor: pointer;
+    color: white;
+}
+a:visited{
+    color:#bcbfc2;
 }
 a:hover{
     text-decoration: none;
+    color: #ffffff;
 }
-a:visited{
-  color: #5433FF;
+hr{
+    border-color: transparent;
 }

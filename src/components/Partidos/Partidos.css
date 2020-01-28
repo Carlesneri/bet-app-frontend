@@ -1,9 +1,9 @@
-.partidos{
-    padding: 10px 5px;
+.partidos-container{
+    display: flex;
 }
 
-.noPartidos{
-    text-align: center;
-    color: white;
-    margin-top: 50px;
+.partidos{
+    display: flex;
+    flex-direction: column;
+    margin: 60px auto 60px 10%;
 }

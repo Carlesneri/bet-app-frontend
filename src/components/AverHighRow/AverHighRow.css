@@ -4,28 +4,28 @@ hr{
 }
 .aver-high-percent-row {
   display: flex;
-  justify-content: space-between;
-  
+}
+.aver-high-row{
+  align-self: flex-end;
 }
 .aver-row, .high-row{
   display: flex;
+  align-self: flex-end;
 }
 .aver-title, .high-title{
   margin-right: 5px;
   width: 60px;
 
 }
-.aver-cuota-list, .high-cuota-list {
+.cuota-list{
   display: flex;
   flex-wrap: wrap;
   justify-content: right;
   align-items: center;
-  opacity: 0.8;
 }
 .percent {
-  margin-left: 0px;
-  display: flex;
-  align-self: center;
-  justify-content: right; 
+  margin: 0;
+  padding: 0;
+  align-self: center; 
   font-weight: 500; 
 }

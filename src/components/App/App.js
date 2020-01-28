@@ -1,22 +1,22 @@
 import React, { Component } from "react";
+import Nav from '../Nav/Nav';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import OddsportalDrop from '../OddsportalDrop/OddsportalDrop';
 import Drop from '../Drop/Drop'
-import { Tabs, Tab }from 'react-bootstrap';
+import Home from '../Home/Home';
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <Tabs className='tabs' defaultActiveKey="Comparator" id="uncontrolled-tab-example">
-          <Tab className="OddsP-Tab" eventKey="Comparator" title="Comparator">
-            <OddsportalDrop />
-          </Tab>
-          <Tab eventKey="Drops" title="Drops">
-            <Drop />
-          </Tab>
-        </Tabs>
-      </div>
+      <BrowserRouter >
+          <Nav />
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/comparator' exact component={OddsportalDrop} />
+            <Route path='/drop' exact component={Drop} />
+          </Switch>
+      </BrowserRouter>
     );
   }
 }

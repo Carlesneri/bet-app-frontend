@@ -6,7 +6,8 @@ body {
   font-family: "Dosis", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #5433FF;  
+  background: #252728;  
+  color:white;
   /* background: linear-gradient(to top, #A5FECB, #20BDFF, #5433FF); 
   background: -webkit-linear-gradient(to top, #A5FECB, #20BDFF, #5433FF);   */
 }

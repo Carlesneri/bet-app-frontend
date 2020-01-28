@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Partido from "../Partido/Partido";
 import "./Partidos.css";
+import NoPartidos from "../NoPartidos/NoPartidos";
 
 
 class Partidos extends Component {
@@ -8,26 +9,28 @@ class Partidos extends Component {
   render() {
     const MIN_PERCENT = 3.5;
     const { partidos } = this.props;
-    var hayPartidos = 'No hay partidos que mostrar';
+    const visible = () => {'display: none'}
     
-    return (
-      <>
-        <div id="Partidos" className="partidos">
-          {partidos.map((partido, index) => {
-            if (partido.percent1 > MIN_PERCENT ||
-                partido.percent2 > MIN_PERCENT ||
-                partido.percent2 > MIN_PERCENT){
-              hayPartidos = '';
-              return <Partido key={index} partido={partido} />;
-            }
-            return null;
-          })}
+    if(partidos.length){
+      return (
+        <div className="partidos-container">
+          <div id="Partidos" className="partidos">
+            {partidos.map((partido, index) => {
+              if (partido.percent1 > MIN_PERCENT ||
+                  partido.percent2 > MIN_PERCENT ||
+                  partido.percent2 > MIN_PERCENT){
+                visible();
+                return <Partido key={index} partido={partido} />;
+              }else return null
+            })}
+          </div>
         </div>
-        <div className='noPartidos'>
-          <h1>{hayPartidos}</h1>
-        </div>
-      </>
-    );
+      )
+    }else return (
+      <div>
+        <NoPartidos style={visible}/>
+      </div>
+    )
   }
 }
 
