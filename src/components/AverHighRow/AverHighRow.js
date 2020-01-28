@@ -5,9 +5,9 @@ import "./AverHighRow.css";
 const AverHighRow = ({ aver, high, percent }) => {
   
   var percentStyle = {fontSize: (Math.round(percent) * 1.5 + 5)};
-  const greenColor = process.env.REACT_APP_GREEN_COLOR
-  const redColor = process.env.REACT_APP_RED_COLOR
-  const greyColor = process.env.REACT_APP_GREY_COLOR
+  const greenColor = '#009432'
+  const redColor = "#EA2027"
+  const greyColor = "#bcbfc2"
 
   function getStyle(type, index){   
     if  (index > 0) {
