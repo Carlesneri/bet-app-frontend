@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PartidoHouses from '../PartidoHouses/PartidoHouses';
+import PartidoHouses from './PartidoHouses';
 import './PartidosHouses.css';
 //import NoPartidos from '../NoPartidos/NoPartidos';
 

@@ -2,9 +2,13 @@
     padding: 20px;
     width: fit-content;
 }       
+.home-draw-away{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .partido-title{
     font-size: 1.3em;
-    margin: 0 10px;
     display: flex;
     justify-content: center;
 }

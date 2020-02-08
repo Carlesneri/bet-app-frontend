@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
+import AlertComponent from '../AlertComponent/AlertComponent'
 import './PartidoDrop.css'
+
+const MIN_DROP_ALERT = 3
 
 class PartidoDrop extends Component{
 
     render(){    
         const {partido} = this.props  
+        //-->Obtenemos datos de la url
+        const {game, country, tournament} = partido
+        
         const colorRed = '#e74c3c'
         const colorGreen = '#2ecc71'   
         const colorGrey = '#95a5a6'
@@ -32,23 +38,41 @@ class PartidoDrop extends Component{
                     </div>
                 </div>
                 <hr />
-                <div className="partido-body">
+                <div className="partido-drop-body">
+                    <div className="partido-data">
+                        <span>
+                            {game} 
+                        </span>
+                        <span> - </span>
+                        <span>
+                            {country}
+                        </span>
+                        <span> - </span>
+                        <span>
+                            {tournament}
+                        </span>
+                    </div>
                     <div className="home-draw-away">
                         <div className="local">
                             <div className="cuotas-local">
                                 {partido.cuotaLocal.map((cuota, index) => {
                                     let dropSpan = ''
+                                    let drop
                                     if(index < partido.localDrop.length){
                                         dropSpan = partido.localDrop[index]
+                                        drop = Math.abs(dropSpan)
+                                        if(index === partido.localDrop.length -1 && drop > MIN_DROP_ALERT) {
+                                            return <AlertComponent key={index} url={partido.url} />
+                                        }
                                     }
                                     return(
                                         <div className="cuotas" key={index}>
                                             <span>
                                                 <div className="cuota">
-                                                    {cuota}
+                                                    {cuota.toFixed(2)}
                                                 </div>
                                                 <div className="drop" style={colorDrop(dropSpan)}>
-                                                    {Math.abs(dropSpan)}
+                                                    {drop}
                                                 </div>
                                             </span>
                                         </div>
@@ -64,17 +88,22 @@ class PartidoDrop extends Component{
                             <div className="cuotas-draw">
                                 {partido.cuotaDraw.map((cuota, index) => {
                                     let dropSpan = ''
+                                    let drop
                                     if(index < partido.drawDrop.length){
                                         dropSpan = partido.drawDrop[index]
+                                        drop = Math.abs(dropSpan)
+                                        if(index === partido.drawDrop.length -1 && drop > MIN_DROP_ALERT){
+                                            return <AlertComponent key={index} url={partido.url} />
+                                        }
                                     }
                                     return(
                                         <div className="cuotas" key={index}>
                                             <span>
                                                 <div className="cuota">
-                                                    {cuota}
+                                                    {cuota.toFixed(2)}
                                                 </div>
                                                 <div className="drop" style={colorDrop(dropSpan)}>
-                                                    {Math.abs(dropSpan)}
+                                                    {drop}
                                                 </div>
                                             </span>
                                         </div>
@@ -90,17 +119,22 @@ class PartidoDrop extends Component{
                             <div className="cuotas-visitante">
                                 {partido.cuotaVisitante.map((cuota, index) => {
                                     let dropSpan = ''
+                                    let drop
                                     if(index < partido.visitanteDrop.length){
                                         dropSpan = partido.visitanteDrop[index]
+                                        drop = Math.abs(dropSpan)
+                                        if(index === partido.visitanteDrop.length -1 && drop > MIN_DROP_ALERT){
+                                            return <AlertComponent key={index} url={partido.url} />
+                                        }
                                     }
                                     return(
                                         <div className="cuotas" key={index}>
                                             <span>
                                                 <div className="cuota">
-                                                    {cuota}
+                                                    {cuota.toFixed(2)}
                                                 </div>
                                                 <div className="drop" style={colorDrop(dropSpan)}>
-                                                    {Math.abs(dropSpan)}
+                                                    {drop}
                                                 </div>
                                             </span>
                                         </div>

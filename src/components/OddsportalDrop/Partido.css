@@ -1,0 +1,36 @@
+.partido{
+    width: fit-content;
+    margin: 0;
+}       
+.partido-title-op{
+    font-size: 1.3em;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+}
+.partido-data{
+  font-size: 0.8em;;
+  display: flex;
+  justify-content: center;
+}
+.partido-title-op{
+  display: flex;
+}
+.partido-body span{
+  margin: 0 5px;
+}
+.partido-name-op {
+    margin: 0 10px;   
+}
+.min-ago-group{
+  width: 3em;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;;
+}
+.min-ago-text{
+  font-weight: normal;
+}
+.min-ago-text::after{
+  content: " '";
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import Cuota from "../Cuota/Cuota.js";
+import Cuota from "./Cuota.js";
 import "./AverHighRow.css";
 
 const AverHighRow = ({ aver, high, percent }) => {

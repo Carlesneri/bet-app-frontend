@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Partido.css";
-import AverHighRow from "../AverHighRow/AverHighRow";
+import AverHighRow from "./AverHighRow";
 
 class Partido extends Component {
   
@@ -18,6 +18,14 @@ class Partido extends Component {
       aver1, aver2, aver3, high1, high2, high3, 
       name, url, last, percent1, percent2, percent3
     } = this.props.partido;
+
+    //-->Obtenemos datos de la url
+    const urlSplit = url.split('/')
+    let i = urlSplit.length 
+    const game = urlSplit[i - 5]
+    const country = urlSplit[i - 4]
+    const tournament = urlSplit[i - 3].replace(/-/g, " ")
+    
   
     aver1 = this.filter(aver1, NUM_CUOTAS)
     aver2 = this.filter(aver2, NUM_CUOTAS)
@@ -28,25 +36,35 @@ class Partido extends Component {
     
     const minutesAgo = ((Date.now() - last)/(1000*60)).toFixed(1);
     const minAgoText = minutesAgo + ' min. ago';
-    const minutesAgoStyle = {opacity: 2 / (minutesAgo + 1)}
+    // const minutesAgoStyle = {opacity: 2 / (minutesAgo + 1)}
 
     return (
       <div className="partido">
-        <div className="partido-title">
-          <div className="partido-name" >
+        <div className="partido-title-op">
+          <div className="partido-name-op" >
             <a href={url} target="_blank" rel="noopener noreferrer">{name}</a>
           </div>
-          <div title={minAgoText} style={minutesAgoStyle} className='minAgoText'>
-            {minutesAgo}<span className="parpadeo"> '</span>
+          <div className="min-ago-group" >
+            <span title={minAgoText} className='min-ago-text'>
+              {minutesAgo}
+            </span>
           </div>
-          {/* <div className="link-ico-container">
-            <a href={url} target="_blank" rel="noopener noreferrer">
-              <img className='link-ico' src={link} alt='OP Link'/>
-            </a>
-          </div> */}
         </div>
         <hr />
         <div className='partido-body'>
+          <div className="partido-data">
+            <span>
+              {game} 
+            </span>
+            <span> - </span>
+            <span>
+              {country}
+            </span>
+            <span> - </span>
+            <span>
+              {tournament}
+            </span>
+          </div>
           <AverHighRow aver={aver1} high={high1} percent={percent1}/>
           <AverHighRow aver={aver2} high={high2} percent={percent2}/>
           <AverHighRow aver={aver3} high={high3} percent={percent3}/>

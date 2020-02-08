@@ -1,6 +1,7 @@
 .home{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25vh;
 }
-.text-home{
-    padding: 30vh 25vh;
-}
+        

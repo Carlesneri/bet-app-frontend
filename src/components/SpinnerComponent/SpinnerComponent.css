@@ -1,10 +1,6 @@
-.no-partidos-container{
+.spinner-container{
     display: flex;
     margin: 25% 0;
     justify-content: center;
     align-items: center;
-}
-.no_partidos {
-    color: white;
-    /* margin: 25vh auto; */
 }

@@ -3,7 +3,7 @@ import { Container, Card } from "react-bootstrap";
 import "./PartidoHouses.css";
 import link from '../../images/link.ico';
 import eye_ico from '../../images/eye.ico'
-import "../PartidosHouses/PartidosHouses"
+import "./PartidosHouses"
 
 class PartidoHouses extends Component {
     constructor(props){

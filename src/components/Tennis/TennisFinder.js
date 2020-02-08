@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import db from '../../database'
-import PartidosDrop from './PartidosDrop'
-import SpinnerComponent from '../SpinnerComponent/SpinnerComponent'
+import PartidosTennis from './PartidosTennis'
+import SpinnerComponent from '../SpinnerComponent/SpinnerComponent';
 import NoPartidos from '../NoPartidos/NoPartidos'
 
-const dbPinnacle = db.child('pinnacle')
+const dbTennisFinder = db.child('tennisFinder')
 
-class Drop extends Component{
+class TennisFinder extends Component{
     constructor(){
         super()
         this.state = {
@@ -14,7 +14,7 @@ class Drop extends Component{
         }
     }
     componentDidMount(){
-        dbPinnacle.on("value", snapshot => {
+        dbTennisFinder.on("value", snapshot => {
             const newState = {
                 partidos: []
             }
@@ -28,16 +28,15 @@ class Drop extends Component{
         })
     }
     componentWillUnmount(){
-        dbPinnacle.off();
+        dbTennisFinder.off();
     }
-
     render(){ 
-        const {partidos} = this.state  
+        const {partidos} = this.state
         if(partidos){
-            if(partidos.length) return <PartidosDrop partidos={partidos} />        
-            else return  <SpinnerComponent /> 
-        }else return <NoPartidos /> 
+            if(partidos.length) return <PartidosTennis partidos={partidos} />
+            else return <SpinnerComponent />
+        }else return <NoPartidos />
     }
 }
 
-export default Drop;
+export default TennisFinder;

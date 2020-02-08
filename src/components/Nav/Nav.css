@@ -1,28 +1,59 @@
 .navi{
     position: fixed;
-    width: 100%;
-    height: 60px;
+    top: 0;
+    min-height: 72px;
     display: flex;
+    width: 100%;
+    justify-content: space-between;
     align-items: center;
     background-color: #111213;
 }
-.navi-link{
+.star-links-group{
     display: flex;
-    margin: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+.star img{
+    margin: 5px 13px;
+    align-self: center;
+    height: 50px;
+}
+.navi-links{
+    display: flex;
+    margin: 10px 20px;
     padding: 0;
     align-items: center;
 }
 .navi-link p{
-    margin: 0 20px;
+    align-self: center;
+    margin: 0 15px;
 }
 .chosen p{
-    margin: 10px;
-    padding: 0;
     color: white;
     font-size: 1.5em;
 }
-.star img{
-    margin: 5px 15px;
-    align-self: center;
+.tools-group{
+    justify-content: flex-end;
+    cursor: pointer;
+    margin-right: 15px;
+    align-items: center;
+}
+.tool-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
     height: 50px;
 }
+.tool-content{
+    position: absolute;
+    top: 60px;
+    right: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .navi-links {
+        display: block;  
+    }
+}
+  

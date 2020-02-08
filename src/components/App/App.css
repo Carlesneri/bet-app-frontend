@@ -12,3 +12,12 @@ a:hover{
 hr{
     border-color: transparent;
 }
+.switch-routes{
+    margin-top: 72px;
+}
+
+@media only screen and (max-width: 600px){
+    .switch-routes{
+        margin-top: 105px;
+    }
+}

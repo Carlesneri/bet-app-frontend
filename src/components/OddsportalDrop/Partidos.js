@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import Partido from "../Partido/Partido";
+import Partido from "./Partido";
+import '../Nav/Nav.css'
 import "./Partidos.css";
 import NoPartidos from "../NoPartidos/NoPartidos";
+
 
 
 class Partidos extends Component {

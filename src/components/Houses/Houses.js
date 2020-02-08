@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PartidosHouses from '../PartidosHouses/PartidosHouses';
+import PartidosHouses from './PartidosHouses';
 import db from '../../database';
 
 const dbHouses = db.child("houses");

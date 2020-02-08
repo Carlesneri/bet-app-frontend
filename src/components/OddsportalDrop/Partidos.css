@@ -1,10 +1,9 @@
 .partidos-container{
     display: flex;
+    justify-content: center;
 }
 
 .partidos{
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 60px 0;
+    display: flex;
 }
