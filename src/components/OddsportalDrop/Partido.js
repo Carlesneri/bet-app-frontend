@@ -3,7 +3,7 @@ import "./Partido.css";
 import AverHighRow from "./AverHighRow";
 
 class Partido extends Component {
-  
+
   filter(array, NUM_CUOTAS){   
     if (!array) return 1;
     else return array.filter((data, index) =>
@@ -11,14 +11,28 @@ class Partido extends Component {
     )
   }
   
+  
   render() {
+    
+    const {index} = this.props
+    //-->Parpadeo segundos
+    const parpadeoEl = document.getElementById(index)
+    const parpadeo = element => {
+      //parpadeoEl.classList.add('parpadeo')
+      element.innerText = ''
+      setTimeout(() => element.innerText = '"', 1000)
+    }
+    if(parpadeoEl) {  
+      setInterval(parpadeo(parpadeoEl), 2000)
+    }
+
     const NUM_CUOTAS = 8;
     
     var { 
       aver1, aver2, aver3, high1, high2, high3, 
       name, url, last, percent1, percent2, percent3
     } = this.props.partido;
-
+    
     //-->Obtenemos datos de la url
     const urlSplit = url.split('/')
     let i = urlSplit.length 
@@ -38,6 +52,7 @@ class Partido extends Component {
     const minAgoText = minutesAgo + ' min. ago';
     // const minutesAgoStyle = {opacity: 2 / (minutesAgo + 1)}
 
+
     return (
       <div className="partido">
         <div className="partido-title-op">
@@ -47,6 +62,9 @@ class Partido extends Component {
           <div className="min-ago-group" >
             <span title={minAgoText} className='min-ago-text'>
               {minutesAgo}
+            </span>
+            <span id={index}>
+              "
             </span>
           </div>
         </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AlertComponent from '../AlertComponent/AlertComponent'
 import './PartidoDrop.css'
 
-const MIN_DROP_ALERT = 3
+const MIN_DROP_ALERT = 3.5
 
 class PartidoDrop extends Component{
 

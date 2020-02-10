@@ -22,7 +22,7 @@ class Partidos extends Component {
                   partido.percent2 > MIN_PERCENT ||
                   partido.percent2 > MIN_PERCENT){
                 visible();
-                return <Partido key={index} partido={partido} />;
+                return <Partido key={index} index={index} partido={partido} />;
               }else return null
             })}
           </div>

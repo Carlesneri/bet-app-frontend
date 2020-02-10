@@ -26,11 +26,19 @@
   width: 3em;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;;
+  justify-content: center;
 }
 .min-ago-text{
+  width: 40px;
+  text-align: right;
+  margin-right: 2px;
   font-weight: normal;
 }
-.min-ago-text::after{
+/* .min-ago-text::after{
   content: " '";
+} */
+
+.parpadeo{
+  transition: color .3s;
+  color: transparent;
 }

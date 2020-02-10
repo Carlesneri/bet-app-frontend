@@ -42,6 +42,13 @@ const Nav = () => {
                             </p>    
                         </NavLink>
                     </div>
+                    <div className="navi-link">
+                        <a href="https://www.youtube.com/watch?v=7-5n398Kdfw" target="_blank" rel="noopener noreferrer">
+                            <p>
+                                Karate
+                            </p>    
+                            </a>
+                    </div>
                 </div>
             </div>
             <div className="tools-group">
