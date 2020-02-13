@@ -5,18 +5,10 @@ import './PartidosDrop.css';
 
 class PartidosDrop extends Component{
 
-    // constructor(props){
-    // super(props)  
-    
-    // this.state = {
-    //     urlsAlert: []
-    // }
-    // }
-    
     render(){
-        const {partidos} = this.props
-        // const partidosToAlert = this.state.urlsAlert
         
+        const {partidos} = this.props     
+           
         if(partidos.length){
             const partidosDrop = partidos.map(partido => {
                 const {cuotaLocal, cuotaDraw, cuotaVisitante} = partido
@@ -47,14 +39,7 @@ class PartidosDrop extends Component{
                 visitanteDrop.length > 1 ?
                     totVisitanteDrop = Math.abs(visitanteDrop.reduce((a,b) => a + b))
                     : totVisitanteDrop = 0
-                
-                // if (this.state.urlsAlert.indexOf(partido.url) === -1){
-                //     console.log('NO existe Url');
-                //     partidosToAlert.push(url)
-                // }else console.log('SÍ existe Url');
-                
-                //alert('hello')
-                
+                                
                 return partido = {
                     ...partido, 
                     localDrop, 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PartidoTennis from './PartidoTennis'
 import NoPartidos from '../NoPartidos/NoPartidos'
+import UpArrow from '../UpArrow/UpArrow';
 import './PartidosTennis.css'
 
 class PartidosTennis extends Component{
@@ -50,8 +51,8 @@ class PartidosTennis extends Component{
         //     })
     
             partidos.sort((a, b) => 
-                (Math.abs(b.player1.player1Coef - b.player2.player2Coef)) -
-                (Math.abs(a.player1.player1Coef - a.player2.player2Coef)) 
+                (Math.max(b.player1.player1Coef/b.player1.player1Matches, b.player2.player2Coef/b.player2.player2Matches)) -
+                (Math.max(a.player1.player1Coef/a.player1.player1Matches, a.player2.player2Coef/a.player2.player2Matches)) 
             )
 
             return(
@@ -63,6 +64,7 @@ class PartidosTennis extends Component{
                         })
                         }
                     </div>
+                    <UpArrow />
                 </div>
             )
         }else return <NoPartidos />

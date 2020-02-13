@@ -12,12 +12,36 @@ a:hover{
 hr{
     border-color: transparent;
 }
-.switch-routes{
+.body-layout{
     margin-top: 72px;
+    display: flex;
+}
+.right-bar{
+    border-left: 2px solid #121314;
+    width: 30%;
+    display: block;
+    border-bottom: 2px solid #121314;
+}
+.alerts{
+    border-bottom: 2px solid #121314;
+    width: 100%;
+    padding: 10px;
+}
+.switch-routes{
+    width: 70%;
+    min-height: 90vh;
 }
 
 @media only screen and (max-width: 600px){
+    .body-layout{
+        flex-direction: column-reverse;
+        margin-top: 124px;
+    }
+    .alerts{
+        display: flex;
+        width: 100%;
+    }
     .switch-routes{
-        margin-top: 105px;
+        width: 100%;
     }
 }

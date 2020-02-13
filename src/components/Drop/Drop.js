@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import db from '../../database'
+// import db from '../../database'
 import PartidosDrop from './PartidosDrop'
 import SpinnerComponent from '../SpinnerComponent/SpinnerComponent'
 import NoPartidos from '../NoPartidos/NoPartidos'
 
-const dbPinnacle = db.child('pinnacle')
+// const dbPinnacle = db.child('pinnacle')
 
 class Drop extends Component{
     constructor(){
@@ -13,28 +13,28 @@ class Drop extends Component{
             partidos: []
         }
     }
-    componentDidMount(){
-        dbPinnacle.on("value", snapshot => {
-            const newState = {
-                partidos: []
-            }
-            if(snapshot.val()){
-                snapshot.forEach(partido => {
-                    partido = partido.val()    
-                    newState.partidos.push(partido)
-                })
-            }else newState.partidos = null
-            this.setState(newState)
-        })
-    }
-    componentWillUnmount(){
-        dbPinnacle.off();
-    }
+    // componentDidMount(){
+        // dbPinnacle.on("value", snapshot => {
+        //     const newState = {
+        //         partidos: []
+        //     }
+        //     if(snapshot.val()){
+        //         snapshot.forEach(partido => {
+        //             partido = partido.val()    
+        //             newState.partidos.push(partido)
+        //         })
+        //     }else newState.partidos = null
+        //     this.setState(newState)
+        // })
+    // }
+    // componentWillUnmount(){
+        // dbPinnacle.off();
+    // }
 
     render(){ 
-        const {partidos} = this.state  
+        const {partidos, addToAlert} = this.props  
         if(partidos){
-            if(partidos.length) return <PartidosDrop partidos={partidos} />        
+            if(partidos.length) return <PartidosDrop partidos={partidos} addToAlert={addToAlert}/>        
             else return  <SpinnerComponent /> 
         }else return <NoPartidos /> 
     }

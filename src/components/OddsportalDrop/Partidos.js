@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Partido from "./Partido";
+import UpArrow from '../UpArrow/UpArrow';
 import '../Nav/Nav.css'
 import "./Partidos.css";
 import NoPartidos from "../NoPartidos/NoPartidos";
@@ -26,6 +27,7 @@ class Partidos extends Component {
               }else return null
             })}
           </div>
+          <UpArrow />
         </div>
       )
     }else return (

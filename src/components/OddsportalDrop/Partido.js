@@ -54,7 +54,7 @@ class Partido extends Component {
 
 
     return (
-      <div className="partido">
+      <div className="partido card-bg">
         <div className="partido-title-op">
           <div className="partido-name-op" >
             <a href={url} target="_blank" rel="noopener noreferrer">{name}</a>

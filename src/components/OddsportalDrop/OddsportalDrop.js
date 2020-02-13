@@ -112,9 +112,6 @@ class OddsportalDrop extends Component {
 
   render() {
     const {partidos} = this.props;
-    console.log(partidos);
-    
-
     if(partidos){
       if(partidos.length){
         partidos.sort((a, b) => {

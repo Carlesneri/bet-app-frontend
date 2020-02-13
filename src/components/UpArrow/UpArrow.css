@@ -1,0 +1,12 @@
+.up-arrow{
+    font-size: 2em;
+    width: 50px;
+    text-align: center;
+    cursor: pointer;    
+    background-color: #121314;
+    position: fixed;
+    bottom: 3vh;
+    right: 2vh;
+    border-radius: 50%;
+
+}

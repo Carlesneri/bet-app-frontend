@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import AlertComponent from '../AlertComponent/AlertComponent'
+// import AlertComponent from '../AlertComponent/AlertComponent'
 import './PartidoDrop.css'
-
-const MIN_DROP_ALERT = 3.5
 
 class PartidoDrop extends Component{
 
-    render(){    
+    render(){ 
         const {partido} = this.props  
         //-->Obtenemos datos de la url
         const {game, country, tournament} = partido
@@ -61,9 +59,6 @@ class PartidoDrop extends Component{
                                     if(index < partido.localDrop.length){
                                         dropSpan = partido.localDrop[index]
                                         drop = Math.abs(dropSpan)
-                                        if(index === partido.localDrop.length -1 && drop > MIN_DROP_ALERT) {
-                                            return <AlertComponent key={index} url={partido.url} />
-                                        }
                                     }
                                     return(
                                         <div className="cuotas" key={index}>
@@ -92,9 +87,10 @@ class PartidoDrop extends Component{
                                     if(index < partido.drawDrop.length){
                                         dropSpan = partido.drawDrop[index]
                                         drop = Math.abs(dropSpan)
-                                        if(index === partido.drawDrop.length -1 && drop > MIN_DROP_ALERT){
-                                            return <AlertComponent key={index} url={partido.url} />
-                                        }
+                                        // if(index === partido.drawDrop.length -1 && drop > MIN_DROP_ALERT){
+                                        //     console.log('To Alert: ',partido);
+                                        //     //alerts.push(partido)// return <AlertComponent key={index} url={partido.url} />
+                                        // }
                                     }
                                     return(
                                         <div className="cuotas" key={index}>
@@ -123,9 +119,10 @@ class PartidoDrop extends Component{
                                     if(index < partido.visitanteDrop.length){
                                         dropSpan = partido.visitanteDrop[index]
                                         drop = Math.abs(dropSpan)
-                                        if(index === partido.visitanteDrop.length -1 && drop > MIN_DROP_ALERT){
-                                            return <AlertComponent key={index} url={partido.url} />
-                                        }
+                                        // if(index === partido.visitanteDrop.length -1 && drop > MIN_DROP_ALERT){
+                                        //     console.log('To Alert: ',partido);
+                                        //     //alerts.push(partido)// return <AlertComponent key={index} url={partido.url} />
+                                        // }
                                     }
                                     return(
                                         <div className="cuotas" key={index}>

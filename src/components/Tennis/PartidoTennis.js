@@ -5,6 +5,8 @@ class PartidoTennis extends Component{
 
     render(){    
         const {partido} = this.props  
+        const totalPlayer1 = (100*partido.player1.player1Coef/partido.player1.player1Matches).toFixed(2)
+        const totalPlayer2 = (100*partido.player2.player2Coef/partido.player2.player2Matches).toFixed(2)
         return (
             <div className="partido-tennis">
                 <div className="partido-title">
@@ -20,7 +22,10 @@ class PartidoTennis extends Component{
                                 Coeficient: {partido.player1.player1Coef}
                             </div>
                             <div>
-                                Num. partidos: {partido.player1.player1Matches}
+                                {partido.player1.player1Matches} partidos
+                            </div>
+                            <div>
+                                Total: {totalPlayer1} %
                             </div>
                         </div>
                         <div className="player">
@@ -28,7 +33,10 @@ class PartidoTennis extends Component{
                                 Coeficient: {partido.player2.player2Coef}
                             </div>
                             <div>
-                                Num. partidos: {partido.player2.player2Matches}
+                                {partido.player2.player2Matches} partidos
+                            </div>
+                            <div>
+                                Total: {totalPlayer2} %
                             </div>
                         </div>
                     </div>
