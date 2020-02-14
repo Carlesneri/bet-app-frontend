@@ -83,9 +83,11 @@ class Partido extends Component {
               {tournament}
             </span>
           </div>
-          <AverHighRow aver={aver1} high={high1} percent={percent1}/>
-          <AverHighRow aver={aver2} high={high2} percent={percent2}/>
-          <AverHighRow aver={aver3} high={high3} percent={percent3}/>
+          <div className="aver-high-rows">
+            <AverHighRow aver={aver1} high={high1} percent={percent1}/>
+            <AverHighRow aver={aver2} high={high2} percent={percent2}/>
+            <AverHighRow aver={aver3} high={high3} percent={percent3}/>
+          </div>
         </div>
       </div>
     );

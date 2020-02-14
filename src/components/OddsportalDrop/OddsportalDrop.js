@@ -121,8 +121,8 @@ class OddsportalDrop extends Component {
         })
         return <Partidos partidos={partidos} />
       } 
-      else return <SpinnerComponent />
-    }else return <NoPartidos />
+      else return <NoPartidos />
+    }else return <SpinnerComponent />
   }
 }
 

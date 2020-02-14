@@ -8,8 +8,8 @@ export const db = app.database().ref()
 export function getOddsPortalPartidos(stateSetter){
   const dbOP = db.child('oddsportal')
   dbOP.on("value", snapshot =>{     
+    let partidosOP = []
     if(snapshot.val()){
-      let partidosOP = []
       snapshot.forEach(match => {
         let aver1 = [];
         let aver2 = [];
@@ -129,12 +129,10 @@ export function getOddsPortalPartidos(stateSetter){
           percent1,
           percent2,
           percent3
-        });
-        stateSetter({partidosOP})
-      });
+        })
+      })
     }
-    // const alerts = getOPAlerts(newState.partidosOP)
-    // newState.alerts = alerts
+    stateSetter({partidosOP})
   })
   
   function getPercent(aver, high) {
@@ -149,49 +147,30 @@ export function getOddsPortalPartidos(stateSetter){
 export function getDropPartidos(stateSetter){
   const dbPinnacle = db.child('pinnacle')
   dbPinnacle.on("value", snapshot => {
+    let drop= []
     if(snapshot.val()){
-      const drop= []
       snapshot.forEach(partido => {
         partido = partido.val()    
         drop.push(partido)
       })
-      stateSetter({drop})
     }
+    stateSetter({drop})
   })
 }
 
 export function getTennisPartidos(stateSetter){
   const dbTennisFinder = db.child('tennisFinder')
   dbTennisFinder.on("value", snapshot => {
-    const newState = {
-      tennis: []
-    }
+    let tennis = []
     if(snapshot.val()){
-      let tennis = []
       snapshot.forEach(partido => {
         partido = partido.val() 
         tennis.push(partido)   
-        //newState.tennis.push(partido)
       })
-      stateSetter({tennis})
-      //this.setState(newState)
-    }//else newState.tennis = null
+    }
+    stateSetter({tennis})
   })
 }
 
 
-export async function getOPAlerts(alerts, partidosOP, stateSetter){    
-  console.log('alerts', alerts);
-  console.log('partidosOP',partidosOP);
-  
-  
-  partidosOP.forEach(async partido => {
-    const stringifyPartido = await JSON.stringify(partido)      
-    if(alerts.indexOf(stringifyPartido) === -1){
-      const getPercent = Math.max(partido.percent1, partido.percent2, partido.percent3)
-      if(getPercent > 6) alerts.push(stringifyPartido)
-    }else console.log('Ya existe alerta OP')
-  })
-  stateSetter({alerts})
-}
 

@@ -64,7 +64,9 @@ class PartidosTennis extends Component{
                         })
                         }
                     </div>
-                    <UpArrow />
+                    <div className="up-arrow-container">
+                        <UpArrow />
+                    </div>
                 </div>
             )
         }else return <NoPartidos />

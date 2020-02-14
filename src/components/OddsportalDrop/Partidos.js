@@ -27,7 +27,9 @@ class Partidos extends Component {
               }else return null
             })}
           </div>
-          <UpArrow />
+          <div className="up-arrow-container">
+            <UpArrow />
+          </div>
         </div>
       )
     }else return (

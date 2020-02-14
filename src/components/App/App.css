@@ -12,6 +12,10 @@ a:hover{
 hr{
     border-color: transparent;
 }
+.nav-container{
+    position: fixed;
+    z-index: 1;
+}
 .body-layout{
     margin-top: 72px;
     display: flex;
@@ -20,9 +24,10 @@ hr{
     border-left: 2px solid #121314;
     width: 30%;
     display: block;
-    border-bottom: 2px solid #121314;
+    /* border-bottom: 2px solid #121314; */
 }
 .alerts{
+    position: fixed;
     border-bottom: 2px solid #121314;
     width: 100%;
     padding: 10px;
@@ -34,14 +39,32 @@ hr{
 
 @media only screen and (max-width: 600px){
     .body-layout{
+        /* position: fixed; */
         flex-direction: column-reverse;
         margin-top: 124px;
+        align-items: center;
+    }
+    .switch-routes:-webkit-scrollbar{
+        width: 50px;
+        height: 50px;
+        
+        /* width: 100%; */
+        /* height: 100vh;
+        overflow: scroll; */
+    }
+    
+    .right-bar{
+        overflow: auto;
+        border-left: none;
+        border-bottom: 2px solid #121314;
+        width: 100%;
+        max-height: 10em;
     }
     .alerts{
+        border: none;
+        position: relative;
         display: flex;
-        width: 100%;
-    }
-    .switch-routes{
-        width: 100%;
+        justify-content: center;
+        /* max-height: 25vh; */
     }
 }

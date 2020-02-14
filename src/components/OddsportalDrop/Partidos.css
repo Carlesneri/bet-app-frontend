@@ -7,3 +7,7 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.up-arrow-container{
+    z-index: 1;
+}

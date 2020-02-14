@@ -34,8 +34,8 @@ class TennisFinder extends Component{
         const {partidos} = this.props
         if(partidos){
             if(partidos.length) return <PartidosTennis partidos={partidos} />
-            else return <SpinnerComponent />
-        }else return <NoPartidos />
+            else return <NoPartidos />
+        }else return <SpinnerComponent />
     }
 }
 

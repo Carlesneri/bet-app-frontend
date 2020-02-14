@@ -3,9 +3,12 @@
 }       
 .partido-title-op{
     font-size: 1.3em;
-    /* margin: 0 10px; */
     display: flex;
     justify-content: center;
+}
+.partido-name-op a{
+    display: flex;
+    text-align: center;
 }
 .partido-data{
   font-size: 0.8em;;
@@ -15,12 +18,11 @@
 .partido-title-op{
   display: flex;
 }
-/* .partido-body span{
-  margin: 0 5px;
-} */
-/* .partido-name-op {
-    margin: 0 10px;   
-} */
+.aver-high-rows{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .min-ago-group{
   width: 3em;
   display: flex;
@@ -33,10 +35,6 @@
   margin-right: 2px;
   font-weight: normal;
 }
-/* .min-ago-text::after{
-  content: " '";
-} */
-
 .parpadeo{
   transition: color .3s;
   color: transparent;

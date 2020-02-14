@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PartidoDrop from './PartidoDrop'
-import NoPartidos from '../NoPartidos/NoPartidos'
+import UpArrow from '../UpArrow/UpArrow'
+//import NoPartidos from '../NoPartidos/NoPartidos'
 import './PartidosDrop.css';
 
 class PartidosDrop extends Component{
@@ -9,7 +10,7 @@ class PartidosDrop extends Component{
         
         const {partidos} = this.props     
            
-        if(partidos.length){
+        // if(partidos.length){
             const partidosDrop = partidos.map(partido => {
                 const {cuotaLocal, cuotaDraw, cuotaVisitante} = partido
                 const localDrop = []
@@ -51,7 +52,6 @@ class PartidosDrop extends Component{
                 }            
             })
             
-
             partidosDrop.sort((a, b) => 
             (b.totLocalDrop + b.totDrawDrop + b.totVisitanteDrop) -
             (a.totLocalDrop + a.totDrawDrop + a.totVisitanteDrop) 
@@ -66,9 +66,12 @@ class PartidosDrop extends Component{
                         })
                         }
                     </div>
+                    <div className="up-arrow-container">
+                        <UpArrow />
+                    </div>
                 </div>
             )
-        }else return <NoPartidos />
+        // }else return <NoPartidos />
     }
 }
 

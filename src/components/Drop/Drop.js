@@ -7,12 +7,12 @@ import NoPartidos from '../NoPartidos/NoPartidos'
 // const dbPinnacle = db.child('pinnacle')
 
 class Drop extends Component{
-    constructor(){
-        super()
-        this.state = {
-            partidos: []
-        }
-    }
+    // constructor(){
+    //     super()
+    //     this.state = {
+    //         partidos: []
+    //     }
+    // }
     // componentDidMount(){
         // dbPinnacle.on("value", snapshot => {
         //     const newState = {
@@ -32,11 +32,11 @@ class Drop extends Component{
     // }
 
     render(){ 
-        const {partidos, addToAlert} = this.props  
+        const {partidos} = this.props  
         if(partidos){
-            if(partidos.length) return <PartidosDrop partidos={partidos} addToAlert={addToAlert}/>        
-            else return  <SpinnerComponent /> 
-        }else return <NoPartidos /> 
+            if(partidos.length) return <PartidosDrop partidos={partidos} />        
+            else return <NoPartidos />
+        }else return <SpinnerComponent />  
     }
 }
 

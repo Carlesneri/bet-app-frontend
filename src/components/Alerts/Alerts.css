@@ -5,3 +5,12 @@
     border: 1px solid;
     background-color: black;
 }
+.alerts-block{
+    padding: 10px;
+}
+.alerts-list{
+    font-weight: 300;
+}
+h6{
+    padding-left: 1em;
+}
