@@ -111,15 +111,15 @@ class OddsportalDrop extends Component {
   // }
 
   render() {
-    const {partidos} = this.props;
-    if(partidos){
-      if(partidos.length){
-        partidos.sort((a, b) => {
+    const {partidosOP, op} = this.props;
+    if(partidosOP){
+      if(partidosOP.length){
+        partidosOP.sort((a, b) => {
           const aMax = Math.max(a.percent1, a.percent2, a.percent3);
           const bMax = Math.max(b.percent1, b.percent2, b.percent3);
           return bMax - aMax;
         })
-        return <Partidos partidos={partidos} />
+        return <Partidos partidos={partidosOP} op={op}/>
       } 
       else return <NoPartidos />
     }else return <SpinnerComponent />

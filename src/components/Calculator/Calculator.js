@@ -83,19 +83,19 @@ class Calculator extends Component{
                         </div>
                         <div className="input-text-group">
                             <input 
-                                type='text' 
+                                type='number' 
                                 name="cuota1"  
                                 value={this.state.cuotas[0]}
                                 onChange={this.handleChange} 
                                 onClick={this.handleChange}/>
                             <input 
-                                type='text' 
+                                type='number' 
                                 name="cuota2" 
                                 value={this.state.cuotas[1]}
                                 onChange={this.handleChange} 
                                 onClick={this.handleChange}/>
                             <input 
-                                type='text' 
+                                type='number' 
                                 name="cuota3" 
                                 value={this.state.cuotas[2]}
                                 onChange={this.handleChange} 
@@ -110,20 +110,22 @@ class Calculator extends Component{
                             Bet Margin
                         </div>
                         <div className="input-text-group">
-                            <input type='text' 
+                            <input type='number' 
                                 name="betMargin1"  
                                 value={this.state.betMargin1}
                                 onChange={this.handleChangeBM} 
                                 onClick={this.handleChangeBM}/>
-                            <input type='text' 
+                            <input type='number' 
                                 name="betMargin2"  
                                 value={this.state.betMargin2}
                                 onChange={this.handleChangeBM} 
                                 onClick={this.handleChangeBM}/>
                         </div>
-                        <div className="bet-margin">
-                            {betMargin}
-                        </div>
+                        {betMargin > 0 &&
+                            <div className="bet-margin">
+                                {betMargin}
+                            </div>
+                        }
                     </div>
                     <div className="buttons">
                         <button onClick={handleClean}>

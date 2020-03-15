@@ -3,6 +3,7 @@ import Home from '../Home/Home';
 import OddsportalDrop from '../OddsportalDrop/OddsportalDrop';
 import Drop from '../Drop/Drop'
 import TennisFinder from '../Tennis/TennisFinder'
+import OpFinder from '../Op/OpFinder'
 
 
 class RouterManager extends Component{
@@ -10,10 +11,10 @@ class RouterManager extends Component{
   render(){
     const {component, partidos} = this.props
     
-    let homeDisplay, comparatorDisplay, dropDisplay, tennisDisplay
-    const {partidosOP, drop, tennis} = partidos
+    let homeDisplay, comparatorDisplay, dropDisplay, tennisDisplay, opDisplay
+    const {partidosOP, drop, tennis, op} = partidos
   
-    homeDisplay = comparatorDisplay = dropDisplay = tennisDisplay = {display: 'none'}
+    homeDisplay = comparatorDisplay = dropDisplay = tennisDisplay = opDisplay = {display: 'none'}
     const activeComponent = {display: 'block'}
     switch(component){
       case 'home': 
@@ -28,6 +29,9 @@ class RouterManager extends Component{
         case 'tennis':
           tennisDisplay = activeComponent
           break
+        case 'op':
+          opDisplay = activeComponent
+          break
       default: break
     }
   
@@ -37,13 +41,16 @@ class RouterManager extends Component{
           <Home />
         </div>
         <div style={comparatorDisplay}>
-          <OddsportalDrop partidos={partidosOP} />
+          <OddsportalDrop partidosOP={partidosOP} op={op}/>
         </div>
         <div style={dropDisplay}>
           <Drop partidos={drop} />
         </div>
         <div style={tennisDisplay}>
           <TennisFinder partidos={tennis} />
+        </div>
+        <div style={opDisplay}>
+          <OpFinder partidos={op} />
         </div>
       </>
     )

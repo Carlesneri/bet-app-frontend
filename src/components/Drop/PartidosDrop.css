@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;;
 } 
-.partidos-drop{
+.partidos-drop{align-items: center;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
 }

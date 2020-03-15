@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import PartidoTennis from './PartidoTennis'
+import PartidoOp from './PartidoOp'
 import NoPartidos from '../NoPartidos/NoPartidos'
 import UpArrow from '../UpArrow/UpArrow';
-import './PartidosTennis.css'
+import './PartidosOp.css'
 
-class PartidosTennis extends Component{
+class PartidosOp extends Component{
     
     render(){
         const {partidos} = this.props
@@ -51,8 +51,8 @@ class PartidosTennis extends Component{
         //     })
     
             partidos.sort((a, b) => 
-                (Math.max(b.player1.player1Coef*b.player1.player1Matches, b.player2.player2Coef*b.player2.player2Matches)) -
-                (Math.max(a.player1.player1Coef*a.player1.player1Matches, a.player2.player2Coef*a.player2.player2Matches)) 
+                (Math.max(b.localQM2*b.numMatchesLocalM2, b.visitanteQM2*b.numMatchesVisitanteM2)) -
+                (Math.max(a.localQM2*a.numMatchesLocalM2, a.visitanteQM2*a.numMatchesVisitanteM2)) 
             )
 
             return(
@@ -60,7 +60,7 @@ class PartidosTennis extends Component{
                     <div className="partidos-drop partidos-tennis">
                         {
                         partidos.map((partido, index) => {
-                            return <PartidoTennis partido={partido} key={index} />
+                            return <PartidoOp partido={partido} key={index} />
                         })
                         }
                     </div>
@@ -73,4 +73,4 @@ class PartidosTennis extends Component{
     }
 }
 
-export default PartidosTennis
+export default PartidosOp

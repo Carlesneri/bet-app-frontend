@@ -4,6 +4,7 @@ hr{
 }
 .aver-high-percent-row {
   display: flex;
+  flex-wrap: nowrap;
 }
 .aver-high-row{
   align-self: flex-end;

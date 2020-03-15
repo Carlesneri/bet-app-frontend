@@ -42,6 +42,13 @@ const Nav = () => {
                             </p>    
                         </NavLink>
                     </div>
+                    <div className="navi-link">
+                        <NavLink to="/op" activeClassName="chosen">
+                            <p>
+                                Op
+                            </p>    
+                        </NavLink>
+                    </div>
                 </div>
             </div>
             <div className="tools-group">

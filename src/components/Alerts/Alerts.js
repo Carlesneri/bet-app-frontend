@@ -54,7 +54,7 @@ export default function Alerts({state}){
                             </div>
                         </div>    
                     }
-                    {alertsTennis.length > 0 &&
+                    {/* {alertsTennis.length > 0 &&
                         <div className="alerts-block">
                             <h6>Tennis</h6>
                             <hr/>
@@ -70,10 +70,9 @@ export default function Alerts({state}){
                                         </div>
                                     )
                                 })}
-
                             </div>
                         </div>    
-                    }
+                    } */}
                 </div>
             )
         }else return <SpinnerComponent />

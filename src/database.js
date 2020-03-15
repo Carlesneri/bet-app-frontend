@@ -172,5 +172,19 @@ export function getTennisPartidos(stateSetter){
   })
 }
 
+export function getOpPartidos(stateSetter){
+  const dbOpFinder = db.child('opFinder')
+  dbOpFinder.on("value", snapshot => {
+    let op = []
+    if(snapshot.val()){
+      snapshot.forEach(partido => {
+        partido = partido.val() 
+        op.push(partido)   
+      })
+    }
+    stateSetter({op})
+  })
+}
+
 
 

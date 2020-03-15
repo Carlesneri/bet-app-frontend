@@ -1,0 +1,10 @@
+.partido-tennis{
+    margin: 20px;
+}.tennis-players{
+    display: flex;
+    justify-content: center;
+}
+.player{
+    color: #bcbfc2;
+    padding: 0 15px;
+}

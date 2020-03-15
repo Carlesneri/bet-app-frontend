@@ -2,7 +2,7 @@
     padding: 10px;
     background-color: #111213;
     cursor: auto;
-    width: 190px;
+    width: 220px;
 }
 .calc-group{
     padding: 10px;
@@ -21,7 +21,7 @@ form{
 input{
     background-color: #252728;
     text-align: center;
-    width: 50px;
+    width: 60px;
     margin: 5px;
 }
 button{
@@ -37,7 +37,7 @@ input, button{
     border: none;
     outline: none;
 }
-button:focus{
+button:focus, button:indeterminate, button:active{
     font-size: .75em;
     outline: none;
 }
@@ -49,4 +49,7 @@ button:hover{
 }
 .calc-label{
     margin-bottom: 0;
+}
+.house-margin, .bet-margin{
+    height: 1em;
 }

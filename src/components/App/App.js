@@ -7,7 +7,8 @@ import "./App.css";
 import { 
   getOddsPortalPartidos, 
   getDropPartidos, 
-  getTennisPartidos
+  getTennisPartidos,
+  getOpPartidos
 } from '../../database'
 
 class App extends Component {
@@ -17,7 +18,8 @@ class App extends Component {
     this.state = {
       partidosOP: null,
       drop: null,
-      tennis: null
+      tennis: null,
+      op: null
     }
   }
   
@@ -26,6 +28,7 @@ class App extends Component {
     getOddsPortalPartidos(stateSetter)
     getDropPartidos(stateSetter)
     getTennisPartidos(stateSetter) 
+    getOpPartidos(stateSetter)
   }
   
   render() {
@@ -48,6 +51,9 @@ class App extends Component {
               </Route> 
               <Route path='/tennis'>
                 <RouterManager component='tennis' partidos={this.state} />  
+              </Route>
+              <Route path='/op'>
+                <RouterManager component='op' partidos={this.state} />  
               </Route>
             </Switch>
           </div>

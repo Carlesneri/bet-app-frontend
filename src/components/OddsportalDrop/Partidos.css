@@ -3,9 +3,10 @@
 }
 
 .partidos{
+    align-items: center;
     justify-content: center;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .up-arrow-container{
