@@ -10,6 +10,7 @@ import {
   getTennisPartidos,
   getOpPartidos
 } from '../../database'
+import { getAlerts } from '../../getAlerts'
 
 class App extends Component {
   
@@ -24,6 +25,7 @@ class App extends Component {
   }
   
   componentDidMount(){
+    Notification.requestPermission()
     const stateSetter = state => this.setState(state)
     getOddsPortalPartidos(stateSetter)
     getDropPartidos(stateSetter)
@@ -32,6 +34,7 @@ class App extends Component {
   }
   
   render() {
+    const alerts = getAlerts(this.state)
     return (
       <HashRouter>
         <div className="nav-container">
@@ -59,7 +62,7 @@ class App extends Component {
           </div>
           <div className="right-bar">
             <div className="alerts">
-              <Alerts state={this.state} />
+              <Alerts alerts={alerts} />
             </div>
           </div>
         </div>

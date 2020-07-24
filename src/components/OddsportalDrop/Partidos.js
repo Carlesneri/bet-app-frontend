@@ -10,11 +10,11 @@ import NoPartidos from "../NoPartidos/NoPartidos";
 class Partidos extends Component {
     
   render() {
-    const MIN_PERCENT = 3.5;
-    const { partidos } = this.props;
+    const MIN_PERCENT = 1;
+    const { partidos, op } = this.props;
     const visible = () => {'display: none'}
     
-    if(partidos.length){
+    if(partidos.length && op){
       return (
         <div className="partidos-container">
           <div id="Partidos" className="partidos">
@@ -23,7 +23,8 @@ class Partidos extends Component {
                   partido.percent2 > MIN_PERCENT ||
                   partido.percent2 > MIN_PERCENT){
                 visible();
-                return <Partido key={index} index={index} partido={partido} />;
+                const partidoOp = op.find( match => partido.url.includes(match.url))
+                return <Partido key={index} index={index} partido={partido} partidoOp={partidoOp}/>;
               }else return null
             })}
           </div>

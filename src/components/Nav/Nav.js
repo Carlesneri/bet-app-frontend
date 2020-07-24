@@ -7,6 +7,10 @@ import {faCalculator} from '@fortawesome/free-solid-svg-icons'
 import Calculator from '../Calculator/Calculator';
 
 const Nav = () => {    
+    const naviLinkElement = document.querySelectorAll('.navi-link')
+    naviLinkElement.forEach( link => {
+        link.addEventListener('click', () => window.scrollTo(0, 0))
+    })
     const [toolsStyle, toolsHandler] = useState({display: 'none'})
     const displayValue = () => toolsStyle.display === 'none' ? 
         toolsHandler({display: 'block'})
@@ -22,7 +26,7 @@ const Nav = () => {
                 </div>
                 <div className="navi-links">
                     <div className="navi-link">
-                        <NavLink to="/comparator"  activeClassName="chosen">
+                        <NavLink to="/comparator" activeClassName="chosen">
                             <p>
                                 Comparator
                             </p>

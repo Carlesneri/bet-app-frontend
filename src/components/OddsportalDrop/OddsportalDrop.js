@@ -2,11 +2,28 @@ import React, { Component } from "react";
 import Partidos from "./Partidos";
 import NoPartidos from '../NoPartidos/NoPartidos'
 import SpinnerComponent from "../SpinnerComponent/SpinnerComponent";
-// import db  from "../../database";
-
-// const dbOP = db.child("oddsportal");
 
 class OddsportalDrop extends Component {
+
+  render() {
+    const {partidosOP, op} = this.props;
+    if(partidosOP){
+      if(partidosOP.length){
+        partidosOP.sort((a, b) => {
+          const aMax = Math.max(a.percent1, a.percent2, a.percent3);
+          const bMax = Math.max(b.percent1, b.percent2, b.percent3);
+          return bMax - aMax;
+        })
+        return <Partidos partidos={partidosOP} op={op}/>
+      } 
+      else return <NoPartidos />
+    }else return <SpinnerComponent />
+  }
+}
+
+export default OddsportalDrop;
+
+
   // constructor() {
   //   super();
   //   this.state = {
@@ -109,21 +126,3 @@ class OddsportalDrop extends Component {
   //   const highCuota = high[lastHighI] ? high[lastHighI].cuota : 1;
   //   return Math.round(1000 * -1 * (1 / highCuota - 1 / averCuota)) / 10;
   // }
-
-  render() {
-    const {partidosOP, op} = this.props;
-    if(partidosOP){
-      if(partidosOP.length){
-        partidosOP.sort((a, b) => {
-          const aMax = Math.max(a.percent1, a.percent2, a.percent3);
-          const bMax = Math.max(b.percent1, b.percent2, b.percent3);
-          return bMax - aMax;
-        })
-        return <Partidos partidos={partidosOP} op={op}/>
-      } 
-      else return <NoPartidos />
-    }else return <SpinnerComponent />
-  }
-}
-
-export default OddsportalDrop;

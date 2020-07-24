@@ -5,8 +5,8 @@ class PartidoTennis extends Component{
 
     render(){    
         const {partido} = this.props  
-        const totalPlayer1 = (100*partido.player1.player1Coef/partido.player1.player1Matches).toFixed(2)
-        const totalPlayer2 = (100*partido.player2.player2Coef/partido.player2.player2Matches).toFixed(2)
+        const totalPlayer1 = Math.round(100 * (100*partido.player1.player1Coef/partido.player1.player1Matches)) / 100
+        const totalPlayer2 = Math.round(100 * (100*partido.player2.player2Coef/partido.player2.player2Matches)) / 100
         return (
             <div className="partido-tennis">
                 <div className="partido-title">

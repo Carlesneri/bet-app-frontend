@@ -9,6 +9,32 @@ class PartidosOp extends Component{
     render(){
         const {partidos} = this.props
         if(partidos.length){
+            partidos.sort((a, b) => 
+                (Math.max(b.localQM2*b.numMatchesLocalM2, b.visitanteQM2*b.numMatchesVisitanteM2)) -
+                (Math.max(a.localQM2*a.numMatchesLocalM2, a.visitanteQM2*a.numMatchesVisitanteM2)) 
+            )
+
+            return(
+                <div className="partidos-drop-container">
+                    <div className="partidos-drop partidos-tennis">
+                        {
+                        partidos.map((partido, index) => {
+                            return <PartidoOp partido={partido} key={index} />
+                        })
+                        }
+                    </div>
+                    <div className="up-arrow-container">
+                        <UpArrow />
+                    </div>
+                </div>
+            )
+        }else return <NoPartidos />
+    }
+}
+
+export default PartidosOp
+
+
             //     const partidosDrop = partidos.map(partido => {
         //         const {cuotaLocal, cuotaDraw, cuotaVisitante} = partido
         //         const localDrop = []
@@ -50,27 +76,3 @@ class PartidosOp extends Component{
         //         }            
         //     })
     
-            partidos.sort((a, b) => 
-                (Math.max(b.localQM2*b.numMatchesLocalM2, b.visitanteQM2*b.numMatchesVisitanteM2)) -
-                (Math.max(a.localQM2*a.numMatchesLocalM2, a.visitanteQM2*a.numMatchesVisitanteM2)) 
-            )
-
-            return(
-                <div className="partidos-drop-container">
-                    <div className="partidos-drop partidos-tennis">
-                        {
-                        partidos.map((partido, index) => {
-                            return <PartidoOp partido={partido} key={index} />
-                        })
-                        }
-                    </div>
-                    <div className="up-arrow-container">
-                        <UpArrow />
-                    </div>
-                </div>
-            )
-        }else return <NoPartidos />
-    }
-}
-
-export default PartidosOp

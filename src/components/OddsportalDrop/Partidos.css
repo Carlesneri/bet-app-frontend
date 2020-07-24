@@ -1,5 +1,7 @@
 .partidos-container{
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .partidos{

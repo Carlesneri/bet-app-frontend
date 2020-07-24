@@ -5,15 +5,15 @@ class PartidoOp extends Component{
 
     render(){    
         const {partido} = this.props  
-        const localQM1 = partido.localQM1.toFixed(2)
-        const visitanteQM1 = partido.visitanteQM1.toFixed(2)
-        const localQM2 = partido.localQM2.toFixed(2)
-        const visitanteQM2 = partido.visitanteQM2.toFixed(2)
+        const localQM1 = Math.round(partido.localQM1 * 100)/100
+        const visitanteQM1 = Math.round(partido.visitanteQM1 * 100)/100
+        const localQM2 = Math.round(partido.localQM2 * 100)/100
+        const visitanteQM2 = Math.round(partido.visitanteQM2 * 100)/100
         let url = partido.url
         if(!url.includes('https://www.oddsportal.com')) url = `https://oddsportal.com${partido.url}`
          
         return (
-            <div className="partido-tennis">
+            <div className="partido-tennis partido">
                 <div className="partido-title">
                     <a className="partido-name" href={url} rel="noopener noreferrer" target="_blank">
                         {partido.name}

@@ -1,5 +1,8 @@
 .partido{
     width: fit-content;
+    box-shadow: 0 0px 3px 0px #bcbfc2;
+    margin: .5em;
+    border-radius: 3px;
 }       
 .partido-title-op{
     font-size: 1.3em;
@@ -17,8 +20,6 @@
 }
 .partido-data{
   font-size: 0.8em;;
-  /* display: flex;
-  justify-content: center; */
 }
 .partido-title-op{
   display: flex;
@@ -43,4 +44,14 @@
 .parpadeo{
   transition: color .3s;
   color: transparent;
+}
+.partido-op{
+  margin-top: .5em;
+  padding: .5em;
+  border: 1px dotted #bcbfc2;
+  border-radius: 3px;
+
+}
+.partido-op span{
+  margin: 0 1em;
 }

@@ -13,23 +13,7 @@ class OpFinder extends Component{
             partidos: []
         }
     }
-    // componentDidMount(){
-        // dbTennisFinder.on("value", snapshot => {
-        //     const newState = {
-        //         partidos: []
-        //     }
-        //     if(snapshot.val()){
-        //         snapshot.forEach(partido => {
-        //             partido = partido.val()    
-        //             newState.partidos.push(partido)
-        //         })
-        //     }else newState.partidos = null
-        //     this.setState(newState)
-        // })
-    // }
-    // componentWillUnmount(){
-    //     dbTennisFinder.off();
-    // }
+
     render(){ 
         const {partidos} = this.props
         if(partidos){

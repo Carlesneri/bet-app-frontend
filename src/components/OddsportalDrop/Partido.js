@@ -32,6 +32,7 @@ class Partido extends Component {
       aver1, aver2, aver3, high1, high2, high3, 
       name, url, last, percent1, percent2, percent3
     } = this.props.partido;
+    const {partidoOp} = this.props    
     
     //-->Obtenemos datos de la url
     const urlSplit = url.split('/')
@@ -88,6 +89,14 @@ class Partido extends Component {
             <AverHighRow aver={aver2} high={high2} percent={percent2}/>
             <AverHighRow aver={aver3} high={high3} percent={percent3}/>
           </div>
+          {partidoOp && <div className="partido-op">
+            <span>
+              QLocal: {Math.round(partidoOp.localQM2 * 100)/100} ({partidoOp.numMatchesLocalM2})
+            </span>
+            <span>
+              QVisitante: {Math.round(partidoOp.visitanteQM2 * 100)/100} ({partidoOp.numMatchesVisitanteM2})
+            </span>
+          </div>}
         </div>
       </div>
     );

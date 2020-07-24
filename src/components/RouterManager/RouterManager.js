@@ -10,10 +10,8 @@ class RouterManager extends Component{
  
   render(){
     const {component, partidos} = this.props
-    
     let homeDisplay, comparatorDisplay, dropDisplay, tennisDisplay, opDisplay
     const {partidosOP, drop, tennis, op} = partidos
-  
     homeDisplay = comparatorDisplay = dropDisplay = tennisDisplay = opDisplay = {display: 'none'}
     const activeComponent = {display: 'block'}
     switch(component){

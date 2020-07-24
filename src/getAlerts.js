@@ -49,10 +49,10 @@ function getDropAlerts(partidosDrop){
                 visitanteDrop = Math.abs(100*(1/cuotaVisitante[cuotaVisitante.length -1] - 1/cuotaVisitante[cuotaVisitante.length - 2]))
             }
             const drop = Math.max(localDrop, drawDrop, visitanteDrop)
-            console.log('drops',localDrop, drawDrop, visitanteDrop);
-            console.log('dropMax',drop);
+            // console.log('drops',localDrop, drawDrop, visitanteDrop);
+            // console.log('dropMax',drop);
             if(drop > 3) alertsDrop.push(partido)
-            console.log('alertsDrop', alertsDrop);            
+            // console.log('alertsDrop', alertsDrop);            
         })  
     }
     return alertsDrop
@@ -71,9 +71,9 @@ function getTennisAlerts(partidosTennis){
                 /
                 partido.player2.player2Matches
             ))
-            console.log('coefTennis', coef);
+            // console.log('coefTennis', coef);
             if(coef > 10) alertsTennis.push(partido)
-            console.log('alertsTennis', alertsTennis); 
+            // console.log('alertsTennis', alertsTennis); 
         })
     }
     return alertsTennis
