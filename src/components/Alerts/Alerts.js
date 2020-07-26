@@ -6,22 +6,52 @@ import star from '../../images/star.png'
 
 export default function Alerts({ alerts }){   
     const { alertsOP, alertsDrop, alertsTennis } = alerts
-    
-    const [alerted, setAlerted] = useState([])
 
-    useEffect(() => {
-        let newAlerts = []
-        if(Notification.permission === "granted"){
-            alertsOP.forEach( alertOP => {
-                const alert = alerted.find(alert => alert.name === alertOP.name)
-                if(! alert) {
-                    newAlerts.push(alertOP)
-                    notificate(alertOP)
-                }
-            })
-            setAlerted(alerted.concat(newAlerts))
-        }
-    }, [alerts])
+    // const [alerted, setAlerted] = useState([])
+
+    // const [newOPAlerts, setNewOPAlerts] = useState(alertsOP.length - alerted.length)
+
+    // if(newOPAlerts > 0){
+    //     console.log(alerted)
+    //     setAlerted(alertsOP)
+    // }
+
+
+
+
+    // if(alerted.length !== alertsOP.length){
+    //     alertsOP.forEach( alertOP => {
+    //         const alert = alerted.find(alert => alert.name === alertOP.name)
+    //         if(! alert) {
+    //             if(alertOP.percent1 > 5 || alertOP.percent2 > 5 ||alertOP.percent3 > 5){
+    //                 // newAlerts.push(alertOP)
+    //                 setAlerted([...alerted, alertOP])
+    //                 notificate(alertOP)
+    //             }
+    //         }
+    //     })
+    // }
+
+
+    // useEffect(() => {
+    //     setAlerted(alertsOP)
+    // }, [])
+
+    // useEffect(() => {
+    //     let newAlerts = []
+    //     if(Notification.permission === "granted"){
+    //         alertsOP.forEach( alertOP => {
+    //             const alert = alerted.find(alert => alert.name === alertOP.name)
+    //             if(! alert) {
+    //                 if(alertOP.percent1 > 5 || alertOP.percent2 > 5 ||alertOP.percent3 > 5){
+    //                     newAlerts.push(alertOP)
+    //                     notificate(alertOP)
+    //                 }
+    //             }
+    //         })
+    //     }
+    //     // setAlerted(alerted.concat(newAlerts))
+    // }, [ alerted ])
 
     function notificate(alert){
         const notification = new Notification(alert.name, {

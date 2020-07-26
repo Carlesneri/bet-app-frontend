@@ -20,7 +20,12 @@ class App extends Component {
       partidosOP: null,
       drop: null,
       tennis: null,
-      op: null
+      op: null,
+      alerts: {
+        alertsOP: [],
+        alertsDrop: [],
+        alertsTennis: []
+      }
     }
   }
   
@@ -31,10 +36,12 @@ class App extends Component {
     getDropPartidos(stateSetter)
     getTennisPartidos(stateSetter) 
     getOpPartidos(stateSetter)
+    this.setState({ alerts: getAlerts(this.state) })
   }
   
   render() {
-    const alerts = getAlerts(this.state)
+    console.log(getAlerts(this.state));
+    console.log(this.state.alerts)
     return (
       <HashRouter>
         <div className="nav-container">
@@ -62,7 +69,7 @@ class App extends Component {
           </div>
           <div className="right-bar">
             <div className="alerts">
-              <Alerts alerts={alerts} />
+              <Alerts alerts={this.state.alerts} />
             </div>
           </div>
         </div>
