@@ -1,14 +1,16 @@
 .partidos-container{
     display: flex;
     align-items: center;
-    justify-content: center;
+    width: 100%;
+    /* justify-content: center; */
 }
 
 .partidos{
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .up-arrow-container{

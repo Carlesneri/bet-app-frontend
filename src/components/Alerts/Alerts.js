@@ -1,57 +1,29 @@
 import React, { useState, useEffect } from 'react';
+import {getAlerts} from '../../getAlerts'
 // import SpinnerComponent from '../SpinnerComponent/SpinnerComponent';
 import './Alerts.css'
 import star from '../../images/star.png'
 
+export default function Alerts({ state }){   
 
-export default function Alerts({ alerts }){   
-    const { alertsOP, alertsDrop, alertsTennis } = alerts
+    const { alertsOP, alertsDrop, alertsTennis } = getAlerts(state)
 
-    // const [alerted, setAlerted] = useState([])
+    const [alerted, setAlerted ] = useState([])
+    
 
-    // const [newOPAlerts, setNewOPAlerts] = useState(alertsOP.length - alerted.length)
+    useEffect(() => {
+        const newAlerts = []
+        alertsOP.forEach(alert => {
+            const isAlerted = alerted.find(alertedItem => alertedItem.name !== alert.name)
+            if(!isAlerted) {
+                newAlerts.push(alert)
+                // notificate(alert)
+            }
+        })
+        setAlerted(alerted.concat(newAlerts))    
+    }, [state])
 
-    // if(newOPAlerts > 0){
-    //     console.log(alerted)
-    //     setAlerted(alertsOP)
-    // }
-
-
-
-
-    // if(alerted.length !== alertsOP.length){
-    //     alertsOP.forEach( alertOP => {
-    //         const alert = alerted.find(alert => alert.name === alertOP.name)
-    //         if(! alert) {
-    //             if(alertOP.percent1 > 5 || alertOP.percent2 > 5 ||alertOP.percent3 > 5){
-    //                 // newAlerts.push(alertOP)
-    //                 setAlerted([...alerted, alertOP])
-    //                 notificate(alertOP)
-    //             }
-    //         }
-    //     })
-    // }
-
-
-    // useEffect(() => {
-    //     setAlerted(alertsOP)
-    // }, [])
-
-    // useEffect(() => {
-    //     let newAlerts = []
-    //     if(Notification.permission === "granted"){
-    //         alertsOP.forEach( alertOP => {
-    //             const alert = alerted.find(alert => alert.name === alertOP.name)
-    //             if(! alert) {
-    //                 if(alertOP.percent1 > 5 || alertOP.percent2 > 5 ||alertOP.percent3 > 5){
-    //                     newAlerts.push(alertOP)
-    //                     notificate(alertOP)
-    //                 }
-    //             }
-    //         })
-    //     }
-    //     // setAlerted(alerted.concat(newAlerts))
-    // }, [ alerted ])
+    console.log(alerted)
 
     function notificate(alert){
         const notification = new Notification(alert.name, {
@@ -87,7 +59,7 @@ export default function Alerts({ alerts }){
                         </div>
                     </div>
                 }
-                {alertsDrop.length > 0 &&
+                {/* {alertsDrop.length > 0 &&
                     <div className="alerts-block">
                         <h6>Drop</h6>
                         <hr/>
@@ -106,7 +78,7 @@ export default function Alerts({ alerts }){
 
                         </div>
                     </div>    
-                }
+                } */}
                 {/* {alertsTennis.length > 0 &&
                     <div className="alerts-block">
                         <h6>Tennis</h6>

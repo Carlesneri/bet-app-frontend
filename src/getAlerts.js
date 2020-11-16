@@ -7,16 +7,13 @@ export function getAlerts(state){
     }
     if(state.partidosOP){
         alerts.alertsOP = getOPAlerts(state.partidosOP)
-        // alerts = alerts.concat(alertsOP) 
     }
-    if(state.drop){
-        alerts.alertsDrop = getDropAlerts(state.drop)
-        //alerts = alerts.concat(alertsDrop)
-    }
-    if(state.tennis){
-        alerts.alertsTennis = getTennisAlerts(state.tennis)
-        //alerts = alerts.concat(alertsTennis)
-    }
+    // if(state.drop){
+    //     alerts.alertsDrop = getDropAlerts(state.drop)
+    // }
+    // if(state.tennis){
+    //     alerts.alertsTennis = getTennisAlerts(state.tennis)
+    // }
     return alerts
 }
 

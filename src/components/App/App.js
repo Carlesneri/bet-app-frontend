@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Switch, Route, HashRouter } from 'react-router-dom';
 import Nav from '../Nav/Nav'
 import RouterManager from '../RouterManager/RouterManager';
-import Alerts from '../Alerts/Alerts'
 import "./App.css";
 import { 
   getOddsPortalPartidos, 
@@ -10,7 +9,6 @@ import {
   getTennisPartidos,
   getOpPartidos
 } from '../../database'
-import { getAlerts } from '../../getAlerts'
 
 class App extends Component {
   
@@ -20,28 +18,20 @@ class App extends Component {
       partidosOP: null,
       drop: null,
       tennis: null,
-      op: null,
-      alerts: {
-        alertsOP: [],
-        alertsDrop: [],
-        alertsTennis: []
-      }
+      op: null
     }
   }
   
   componentDidMount(){
-    Notification.requestPermission()
+    // Notification.requestPermission()
     const stateSetter = state => this.setState(state)
     getOddsPortalPartidos(stateSetter)
     getDropPartidos(stateSetter)
     getTennisPartidos(stateSetter) 
     getOpPartidos(stateSetter)
-    this.setState({ alerts: getAlerts(this.state) })
   }
   
   render() {
-    console.log(getAlerts(this.state));
-    console.log(this.state.alerts)
     return (
       <HashRouter>
         <div className="nav-container">
@@ -56,12 +46,12 @@ class App extends Component {
               <Route path='/comparator'>
                 <RouterManager component='comparator' partidos={this.state} />  
               </Route> 
-              <Route path='/drop'>
+              {/* <Route path='/drop'>
                 <RouterManager component='drop' partidos={this.state} />  
               </Route> 
               <Route path='/tennis'>
                 <RouterManager component='tennis' partidos={this.state} />  
-              </Route>
+              </Route> */}
               <Route path='/op'>
                 <RouterManager component='op' partidos={this.state} />  
               </Route>
@@ -69,7 +59,7 @@ class App extends Component {
           </div>
           <div className="right-bar">
             <div className="alerts">
-              <Alerts alerts={this.state.alerts} />
+              {/* <Alerts state={this.state} /> */}
             </div>
           </div>
         </div>

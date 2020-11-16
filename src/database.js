@@ -1,8 +1,12 @@
 import firebase from "firebase/app";
 import { DB_CONFIG } from "./config/config";
 import "firebase/database";
+import "firebase/auth";
 
 const app = firebase.initializeApp(DB_CONFIG);
+
+firebase.auth().signInAnonymously().catch(err => console.log(err))
+
 export const db = app.database().ref()
 
 export function getOddsPortalPartidos(stateSetter){

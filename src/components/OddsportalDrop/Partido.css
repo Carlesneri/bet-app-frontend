@@ -1,8 +1,10 @@
 .partido{
-    width: fit-content;
-    box-shadow: 0 0px 3px 0px #bcbfc2;
+    width: 90%;
+    /* box-shadow: 0 0px 3px 0px #bcbfc2; */
     margin: .5em;
     border-radius: 3px;
+    padding: 1rem;
+    border-bottom: 1px solid #bcbfc2;
 }       
 .partido-title-op{
     font-size: 1.3em;
