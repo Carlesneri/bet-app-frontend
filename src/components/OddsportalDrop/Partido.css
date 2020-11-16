@@ -1,6 +1,5 @@
 .partido{
     width: 90%;
-    /* box-shadow: 0 0px 3px 0px #bcbfc2; */
     margin: .5em;
     border-radius: 3px;
     padding: 1rem;
@@ -21,7 +20,7 @@
   align-items: center;
 }
 .partido-data{
-  font-size: 0.8em;;
+  font-size: 0.8em;
 }
 .partido-title-op{
   display: flex;
