@@ -3,6 +3,7 @@ import { Switch, Route, HashRouter } from 'react-router-dom';
 import Nav from '../Nav/Nav'
 import RouterManager from '../RouterManager/RouterManager';
 import "./App.css";
+import Alerts from '../Alerts/Alerts'
 import { 
   getOddsPortalPartidos, 
   getDropPartidos, 
@@ -46,9 +47,10 @@ class App extends Component {
               <Route path='/comparator'>
                 <RouterManager component='comparator' partidos={this.state} />  
               </Route> 
-              {/* <Route path='/drop'>
+              <Route path='/drop'>
                 <RouterManager component='drop' partidos={this.state} />  
               </Route> 
+              {/* 
               <Route path='/tennis'>
                 <RouterManager component='tennis' partidos={this.state} />  
               </Route> */}
@@ -57,11 +59,13 @@ class App extends Component {
               </Route>
             </Switch>
           </div>
-          <div className="right-bar">
-            <div className="alerts">
-              {/* <Alerts state={this.state} /> */}
+          { this.state.partidosOP && (
+            <div className="right-bar">
+              <div className="alerts">
+                <Alerts state={this.state} />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </HashRouter>
     );

@@ -1,6 +1,12 @@
 .partido-tennis{
     margin: .5em;
-}.tennis-players{
+}
+.partido-title{
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+}
+.tennis-players{
     display: flex;
     justify-content: center;
 }

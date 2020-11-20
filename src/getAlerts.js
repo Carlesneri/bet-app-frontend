@@ -24,7 +24,7 @@ function getOPAlerts(partidosOP){
     if(partidosOP.length){
         partidosOP.forEach(partido => {
             const getPercent = Math.max(partido.percent1, partido.percent2, partido.percent3)
-            if(getPercent > 6) alertsOP.push(partido)
+            if(getPercent >= 6) alertsOP.push(partido)
         })
     }
     return(alertsOP)

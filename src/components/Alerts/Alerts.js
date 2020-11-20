@@ -6,24 +6,26 @@ import star from '../../images/star.png'
 
 export default function Alerts({ state }){   
 
-    const { alertsOP, alertsDrop, alertsTennis } = getAlerts(state)
+    const { alertsOP } = getAlerts(state)
 
-    const [alerted, setAlerted ] = useState([])
+    const [alerted, setAlerted ] = useState(alertsOP)
     
+    console.log(alerted)
 
     useEffect(() => {
         const newAlerts = []
         alertsOP.forEach(alert => {
-            const isAlerted = alerted.find(alertedItem => alertedItem.name !== alert.name)
+            const isAlerted = alerted.find(alertedItem => alertedItem.name === alert.name)
+
+            console.log('isAlerted', isAlerted)
+
             if(!isAlerted) {
                 newAlerts.push(alert)
-                // notificate(alert)
+                notificate(alert)
             }
         })
         setAlerted(alerted.concat(newAlerts))    
     }, [state])
-
-    console.log(alerted)
 
     function notificate(alert){
         const notification = new Notification(alert.name, {
@@ -36,7 +38,7 @@ export default function Alerts({ state }){
         }
     }   
     
-    if(alertsOP.length || alertsDrop.length || alertsTennis.length){
+    if(alertsOP.length){
         return (
             <div>
                 {alertsOP.length > 0 && 
