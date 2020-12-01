@@ -9,6 +9,8 @@ class PartidosDrop extends Component{
     render(){
         
         const {partidos} = this.props     
+
+        // console.log(partidos);
            
         // if(partidos.length){
             const partidosDrop = partidos.map(partido => {

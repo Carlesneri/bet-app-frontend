@@ -1,6 +1,6 @@
 .partido{
     padding: 20px;
-    width: fit-content;
+    width: 90%;
 }       
 .home-draw-away{
     display: flex;
@@ -54,4 +54,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.partido-drop-body {
+    text-align: center;
 }

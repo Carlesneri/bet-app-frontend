@@ -8,9 +8,9 @@ export function getAlerts(state){
     if(state.partidosOP){
         alerts.alertsOP = getOPAlerts(state.partidosOP)
     }
-    // if(state.drop){
-    //     alerts.alertsDrop = getDropAlerts(state.drop)
-    // }
+    if(state.drop){
+        alerts.alertsDrop = getDropAlerts(state.drop)
+    }
     // if(state.tennis){
     //     alerts.alertsTennis = getTennisAlerts(state.tennis)
     // }
@@ -55,23 +55,23 @@ function getDropAlerts(partidosDrop){
     return alertsDrop
 }
 
-function getTennisAlerts(partidosTennis){
-    let alertsTennis = []
-    if(partidosTennis.length){
-        partidosTennis.forEach(partido => {
-            const coef = Math.abs(100 * (
-                partido.player1.player1Coef
-                /
-                partido.player1.player1Matches
-                - 
-                partido.player2.player2Coef
-                /
-                partido.player2.player2Matches
-            ))
-            // console.log('coefTennis', coef);
-            if(coef > 10) alertsTennis.push(partido)
-            // console.log('alertsTennis', alertsTennis); 
-        })
-    }
-    return alertsTennis
-}
+// function getTennisAlerts(partidosTennis){
+//     let alertsTennis = []
+//     if(partidosTennis.length){
+//         partidosTennis.forEach(partido => {
+//             const coef = Math.abs(100 * (
+//                 partido.player1.player1Coef
+//                 /
+//                 partido.player1.player1Matches
+//                 - 
+//                 partido.player2.player2Coef
+//                 /
+//                 partido.player2.player2Matches
+//             ))
+//             // console.log('coefTennis', coef);
+//             if(coef > 10) alertsTennis.push(partido)
+//             // console.log('alertsTennis', alertsTennis); 
+//         })
+//     }
+//     return alertsTennis
+// }

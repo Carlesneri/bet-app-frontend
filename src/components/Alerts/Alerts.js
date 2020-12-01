@@ -6,37 +6,41 @@ import star from '../../images/star.png'
 
 export default function Alerts({ state }){   
 
-    const { alertsOP } = getAlerts(state)
+    const { alertsOP, alertsDrop } = getAlerts(state)
 
     const [alerted, setAlerted ] = useState(alertsOP)
     
-    console.log(alerted)
+    // console.log(alerted)
+    
+    function notificate(alert){
+        const notification = new Notification(alert.name, {
+            body: `p1: ${alert.percent1}, p2: ${alert.percent2}, p3: ${alert.percent3}`,
+            icon: star
+            
+        })
+        notification.onclick = () => {
+            window.open(alert.url, "_blank")
+        }
+        const newAlerts = alerted
+        newAlerts.push(alert)
+        setAlerted(newAlerts)    
+    }   
 
     useEffect(() => {
         const newAlerts = []
         alertsOP.forEach(alert => {
             const isAlerted = alerted.find(alertedItem => alertedItem.name === alert.name)
 
-            console.log('isAlerted', isAlerted)
+            // console.log('isAlerted', isAlerted)
 
             if(!isAlerted) {
                 newAlerts.push(alert)
                 notificate(alert)
             }
         })
-        setAlerted(alerted.concat(newAlerts))    
-    }, [state])
+        // setAlerted(alerted.concat(newAlerts))    
+    })
 
-    function notificate(alert){
-        const notification = new Notification(alert.name, {
-            body: `p1: ${alert.percent1}, p2: ${alert.percent2}, p3: ${alert.percent3}`,
-            icon: star
-
-        })
-        notification.onclick = () => {
-            window.open(alert.url, "_blank")
-        }
-    }   
     
     if(alertsOP.length){
         return (
@@ -61,7 +65,7 @@ export default function Alerts({ state }){
                         </div>
                     </div>
                 }
-                {/* {alertsDrop.length > 0 &&
+                {alertsDrop.length > 0 &&
                     <div className="alerts-block">
                         <h6>Drop</h6>
                         <hr/>
@@ -80,7 +84,7 @@ export default function Alerts({ state }){
 
                         </div>
                     </div>    
-                } */}
+                }
                 {/* {alertsTennis.length > 0 &&
                     <div className="alerts-block">
                         <h6>Tennis</h6>

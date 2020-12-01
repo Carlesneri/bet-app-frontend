@@ -14,17 +14,17 @@ class Partido extends Component {
   
   render() {
     
-    const {index} = this.props
-    //-->Parpadeo segundos
-    const parpadeoEl = document.getElementById(index)
-    const parpadeo = element => {
-      //parpadeoEl.classList.add('parpadeo')
-      element.innerText = ''
-      setTimeout(() => element.innerText = '"', 1000)
-    }
-    if(parpadeoEl) {  
-      setInterval(parpadeo(parpadeoEl), 2000)
-    }
+    // const {index} = this.props
+    // //-->Parpadeo segundos
+    // const parpadeoEl = document.getElementById(index)
+    // const parpadeo = element => {
+    //   //parpadeoEl.classList.add('parpadeo')
+    //   element.innerText = ''
+    //   setTimeout(() => element.innerText = '"', 1000)
+    // }
+    // if(parpadeoEl) {  
+    //   setInterval(parpadeo(parpadeoEl), 2000)
+    // }
 
     const NUM_CUOTAS = 8;
     
@@ -51,12 +51,19 @@ class Partido extends Component {
     
     const minutesAgo = ((Date.now() - last)/(1000*60)).toFixed(1);
     const minAgoText = minutesAgo + ' min. ago';
+
+    const bgAlpha = 1 - minutesAgo/60
+
+    const titleStyle = {
+      backgroundColor: `rgba(0, 100, 0, ${bgAlpha})`
+    }
+
     // const minutesAgoStyle = {opacity: 2 / (minutesAgo + 1)}
 
 
     return (
-      <div className="partido card-bg">
-        <div className="partido-title-op">
+      <div className="partido card-bg" >
+        <div className="partido-title-op" style={titleStyle}>
           <div className="partido-name-op" >
             <a href={url} target="_blank" rel="noopener noreferrer">{name}</a>
           </div>
@@ -64,7 +71,7 @@ class Partido extends Component {
             <span title={minAgoText} className='min-ago-text'>
               {minutesAgo}
             </span>
-            <span id={index}>
+            <span>
               "
             </span>
           </div>

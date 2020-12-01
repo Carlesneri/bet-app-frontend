@@ -1,8 +1,10 @@
 .partidos-drop-container{
     display: flex;
-    justify-content: center;;
+    justify-content: center;
 } 
-.partidos-drop{align-items: center;
+.partidos-drop{
+    width: 100%;
+    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
