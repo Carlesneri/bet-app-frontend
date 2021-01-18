@@ -190,5 +190,21 @@ export function getOpPartidos(stateSetter){
   })
 }
 
+export function getNewMatchesPinnacle(stateSetter){
+  const dbNewMatchesPinnacle = db.child('newMatchesPinnacle')
+  dbNewMatchesPinnacle.on('value', snapshot => {
+    let newMatchesPinnacle = []
+    if(snapshot.val()) {
+      snapshot.forEach(partido => {
+        newMatchesPinnacle.push(partido.val())
+      })
+      newMatchesPinnacle = newMatchesPinnacle.sort((a, b) => {
+        return b.last - a.last
+      })
+      stateSetter({ newMatchesPinnacle })
+    }
+  })
+}
+
 
 

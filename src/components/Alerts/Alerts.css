@@ -1,7 +1,7 @@
 .alert{
-    position: fixed;
+    /* position: fixed;
     top: 100px;
-    left: 100px;
+    left: 100px; */
     border: 1px solid;
     background-color: black;
 }
