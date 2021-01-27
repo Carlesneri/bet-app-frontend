@@ -35,7 +35,11 @@ function NewMatchesSidebar({state = []}){
                     <div className="new-match-title">
                         <span role="img" aria-label="sport">{getSportEmoji(match.game)}</span>
                         <a href={getBet365href(match.local)} target="_blank" rel="nofollow noopener noreferrer">
-                            {match.local} - {match.visitante}
+                            {match.local}
+                        </a>
+                        <span>-</span>
+                        <a href={getBet365href(match.visitante)} target="_blank" rel="nofollow noopener noreferrer">
+                            {match.visitante}
                         </a>
                     </div>
                     <div className="new-match-cuotas">
@@ -49,8 +53,12 @@ function NewMatchesSidebar({state = []}){
                 <div className="new-match-title">
                     <span role="img" aria-label="sport">{getSportEmoji(match.game)}</span>
                     <a href={getBet365href(match.local)} target="_blank" rel="nofollow noopener noreferrer">
-                            {match.local} - {match.visitante}
-                    </a>
+                            {match.local}
+                        </a>
+                        <span>-</span>
+                        <a href={getBet365href(match.visitante)} target="_blank" rel="nofollow noopener noreferrer">
+                            {match.visitante}
+                        </a>
                 </div>
                 <div className="new-match-cuotas">
                     <div>{match.cuotaLocal}</div>
