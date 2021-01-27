@@ -39,7 +39,7 @@ class PartidoHouses extends Component {
                         <Card.Title className="card-title-houses">
                             <img src={eye_ico} onClick={() => this.hide(partido)} className="eye-ico-houses" alt="visible" title="hide" />
                             {`${partido.local} - ${partido.visitante} (${partido.league})`}
-                            <a href={href_link} target="_blank" rel="noopener noreferrer">
+                            <a href={href_link} target="_blank" rel="nofollow noopener noreferrer">
                                 <img src={link} className="link-ico" alt="link" />
                             </a>
                         </Card.Title>

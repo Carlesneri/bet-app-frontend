@@ -65,7 +65,7 @@ class Partido extends Component {
       <div className="partido card-bg" >
         <div className="partido-title-op" style={titleStyle}>
           <div className="partido-name-op" >
-            <a href={url} target="_blank" rel="noopener noreferrer">{name}</a>
+            <a href={url} target="_blank" rel="nofollow noopener noreferrer">{name}</a>
           </div>
           <div className="min-ago-group" >
             <span title={minAgoText} className='min-ago-text'>

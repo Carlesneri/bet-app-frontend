@@ -10,7 +10,7 @@ class PartidoTennis extends Component{
         return (
             <div className="partido-tennis">
                 <div className="partido-title">
-                    <a className="partido-name" href={partido.urlMatch} rel="noopener noreferrer" target="_blank">
+                    <a className="partido-name" href={partido.urlMatch} rel="nofollow noopener noreferrer" target="_blank">
                         {partido.name}
                     </a>
                 </div>

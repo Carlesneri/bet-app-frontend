@@ -28,7 +28,7 @@ class PartidoDrop extends Component{
         return (
             <div className="partido">
                 <div className="partido-title">
-                    <a className="partido-name" href={partido.url} rel="noopener noreferrer" target="_blank" onClick={handleClick}>
+                    <a className="partido-name" href={partido.url} rel="nofollow noopener noreferrer" target="_blank" onClick={handleClick}>
                         {`${partido.local} - ${partido.visitante}`}
                     </a>
                     <div>

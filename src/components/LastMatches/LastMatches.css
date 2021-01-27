@@ -1,0 +1,30 @@
+.last-match {
+    margin: 1rem;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #bcbfc2;
+}
+.last-match-cuotas {
+    margin-bottom: .5rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-weight: bold;
+    color: #bcbfc2;
+}
+.last-match-cuotas div{
+    margin: 0 1rem;
+}
+.last-match-title {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 1rem;
+}
+.last-match-title a {
+    /* text-align: center; */
+    /* flex-grow: 1; */
+    margin-left: 1rem;
+}

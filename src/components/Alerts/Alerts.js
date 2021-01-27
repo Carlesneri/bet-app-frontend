@@ -55,7 +55,7 @@ export default function Alerts({ state }){
                                         <div key={index}>
                                             <a href={alert.url} 
                                                 target="_blank"  
-                                                rel="noopener noreferrer">
+                                                rel="nofollow noopener noreferrer">
                                                 {alert.name}
                                             </a>
                                         </div>
@@ -75,7 +75,7 @@ export default function Alerts({ state }){
                                     <div key={index}>
                                         <a href={alert.url} 
                                             target="_blank"  
-                                            rel="noopener noreferrer">
+                                            rel="nofollow noopener noreferrer">
                                             {alert.name}
                                         </a>
                                     </div>
@@ -95,7 +95,7 @@ export default function Alerts({ state }){
                                     <div key={index}>
                                         <a href={alert.urlMatch} 
                                             target="_blank"  
-                                            rel="noopener noreferrer">
+                                            rel="nofollow noopener noreferrer">
                                             {alert.name}
                                         </a>
                                     </div>

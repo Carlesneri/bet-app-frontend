@@ -4,7 +4,7 @@ import Nav from '../Nav/Nav'
 import RouterManager from '../RouterManager/RouterManager';
 import "./App.css";
 import Alerts from '../Alerts/Alerts'
-import NewMatches from '../NewMatches'
+import NewMatchesSidebar from '../NewMatchesSidebar'
 import { 
   getOddsPortalPartidos, 
   getDropPartidos, 
@@ -34,6 +34,7 @@ class App extends Component {
     getTennisPartidos(stateSetter) 
     getOpPartidos(stateSetter)
     getNewMatchesPinnacle(stateSetter)
+
   }
   
   render() {
@@ -56,11 +57,14 @@ class App extends Component {
               </Route> 
               {/* 
               <Route path='/tennis'>
-                <RouterManager component='tennis' partidos={this.state} />  
-              </Route> */}
+              <RouterManager component='tennis' partidos={this.state} />  
+            </Route> */}
               <Route path='/op'>
                 <RouterManager component='op' partidos={this.state} />  
               </Route>
+              <Route path='/last'>
+                <RouterManager component='last' partidos={this.state} />  
+              </Route> 
             </Switch>
           </div>
           { this.state.partidosOP && (
@@ -69,7 +73,7 @@ class App extends Component {
                 <Alerts state={this.state} />
               </div>
               <div className="newMatches">
-                <NewMatches state={this.state.newMatchesPinnacle} />
+                <NewMatchesSidebar state={this.state.newMatchesPinnacle} />
               </div>
             </div>
           )}

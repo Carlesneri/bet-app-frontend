@@ -53,6 +53,13 @@ const Nav = () => {
                             </p>    
                         </NavLink>
                     </div>
+                    <div className="navi-link">
+                        <NavLink to="/last" activeClassName="chosen">
+                            <p>
+                                Last
+                            </p>    
+                        </NavLink>
+                    </div>
                 </div>
             </div>
             <div className="tools-group">

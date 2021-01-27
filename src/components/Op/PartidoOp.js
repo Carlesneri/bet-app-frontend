@@ -15,7 +15,7 @@ class PartidoOp extends Component{
         return (
             <div className="partido-tennis partido">
                 <div className="partido-title">
-                    <a className="partido-name" href={url} rel="noopener noreferrer" target="_blank">
+                    <a className="partido-name" href={url} rel="nofollow noopener noreferrer" target="_blank">
                         {partido.name}
                     </a>
                 </div>
