@@ -39,13 +39,21 @@ function LastMatches({state = []}){
             return <div key={match.last} className="last-match">
                 <div className="last-match-title">
                     <span role="img" aria-label="sport">{getSportEmoji(match.game)}</span>
-                    <a href={getBet365href(match.local)} target="_blank" rel="nofollow noopener noreferrer">
-                            {match.local}
-                        </a>
-                        <span>-</span>
-                        <a href={getBet365href(match.visitante)} target="_blank" rel="nofollow noopener noreferrer">
-                            {match.visitante}
-                        </a>
+                    <a href={getBet365href(match.local)} rel="nofollow noopener noreferrer" target="_blank">
+                        <img src={bet365Icon} alt="bet365 icon"/>
+                    </a>
+                    <a href={getOPhref(match.local)} target="_blank" rel="nofollow noopener noreferrer">
+                        {match.local}
+                    </a>
+                    <a className="partido-name" href={match.url} rel="nofollow noopener noreferrer" target="_blank">
+                        <img src={pinnacleIcon} alt="icon pinnacle"/>
+                    </a>
+                    <a href={getOPhref(match.visitante)} target="_blank" rel="nofollow noopener noreferrer">
+                        {match.visitante}
+                    </a>
+                    <a href={getBet365href(match.visitante)} rel="nofollow noopener noreferrer" target="_blank">
+                        <img src={bet365Icon} alt="bet365 icon"/>
+                    </a>
                 </div>
                 <div className="last-match-cuotas">
                     <div>{match.cuotaLocal}</div>
