@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import { getBet365href, getOPhref } from '../../utils'
+import bet365Icon from '../../icons/bet365.ico'
+import pinnacleIcon from '../../icons/pinnacleIcon.png'
+// import { } from '../../utils'
 // import AlertComponent from '../AlertComponent/AlertComponent'
 import './PartidoDrop.css'
 
@@ -12,14 +16,14 @@ class PartidoDrop extends Component{
         const colorRed = '#e74c3c'
         const colorGreen = '#2ecc71'   
         const colorGrey = '#95a5a6'
-        const href_link_op_local = "https://www.oddsportal.com/search/" + partido.local
-        const href_link_op_visitante = "https://www.oddsportal.com/search/" + partido.visitante        
-        const handleClick = () =>{
-            setTimeout(() => {
-                window.open(href_link_op_local)
-                window.open(href_link_op_visitante)
-            }, 1)
-        }    
+        // const href_link_op_local = "https://www.oddsportal.com/search/" + partido.local
+        // const href_link_op_visitante = "https://www.oddsportal.com/search/" + partido.visitante        
+        // const handleClick = () =>{
+        //     setTimeout(() => {
+        //         window.open(href_link_op_local)
+        //         window.open(href_link_op_visitante)
+        //     }, 1)
+        // }    
         const colorDrop = (dropSpan) => {
             if (dropSpan > 0) return {color: colorGreen}
             else if(dropSpan < 0) return {color: colorRed}
@@ -28,9 +32,25 @@ class PartidoDrop extends Component{
         return (
             <div className="partido">
                 <div className="partido-title">
-                    <a className="partido-name" href={partido.url} rel="nofollow noopener noreferrer" target="_blank" onClick={handleClick}>
-                        {`${partido.local} - ${partido.visitante}`}
+                    <div className="partido-name">
+                        <a href={getBet365href(partido.local)} rel="nofollow noopener noreferrer" target="_blank">
+                            <img src={bet365Icon} alt="bet365 icon"/>
+                        </a>
+                        <a href={getOPhref(partido.local)} rel="nofollow noopener noreferrer" target="_blank" title={getOPhref(partido.local)}>
+                            {partido.local}
+                        </a>
+                    </div>
+                    <a className="partido-name" href={partido.url} rel="nofollow noopener noreferrer" target="_blank">
+                        <img src={pinnacleIcon} alt="icon pinnacle"/>
                     </a>
+                    <div className="partido-name">
+                        <a href={getOPhref(partido.visitante)} rel="nofollow noopener noreferrer" target="_blank" title={getOPhref(partido.visitante)}>
+                            {partido.visitante}
+                        </a>
+                        <a href={getBet365href(partido.visitante)} rel="nofollow noopener noreferrer" target="_blank">
+                            <img src={bet365Icon} alt="bet365 icon"/>
+                        </a>
+                    </div>
                     <div>
                         {partido.matchTime}
                     </div>

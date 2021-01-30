@@ -20,11 +20,16 @@
 .last-match-title {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     margin: 1rem;
 }
-.last-match-title a {
-    /* text-align: center; */
-    /* flex-grow: 1; */
+.last-match-title span {
     margin: 0 1rem;
+}
+.last-match-title a {
+    margin: 0 .3rem;
+}
+.last-match-title img {
+    height: 1rem;
 }

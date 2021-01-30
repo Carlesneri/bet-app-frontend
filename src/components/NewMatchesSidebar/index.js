@@ -1,28 +1,10 @@
 import React from 'react'
 import './NewMatchesSidebar.css'
+import { getBet365href, getSportEmoji } from '../../utils'
+import pinnacleIcon from '../../icons/pinnacleIcon.png'
+
 
 function NewMatchesSidebar({state = []}){
-
-    function getSportEmoji (sport) {
-        let emoji
-        switch (sport) {
-            case 'Fútbol': 
-                emoji = '⚽'           
-                break;
-        
-            case 'Tennis':
-                emoji = '🎾'
-                break;
-            default:
-                emoji = ''
-        }
-
-        return emoji
-    }
-
-    function getBet365href(local) {
-        return `https://www.bet365.es/#/AX/K^${local}`
-    }
 
     // console.log(state);
     return <div className='new-matches'>
@@ -37,7 +19,9 @@ function NewMatchesSidebar({state = []}){
                         <a href={getBet365href(match.local)} target="_blank" rel="nofollow noopener noreferrer">
                             {match.local}
                         </a>
-                        <span>-</span>
+                        <a className="partido-name" href={match.url} rel="nofollow noopener noreferrer" target="_blank">
+                            <img src={pinnacleIcon} alt="icon pinnacle"/>
+                        </a>
                         <a href={getBet365href(match.visitante)} target="_blank" rel="nofollow noopener noreferrer">
                             {match.visitante}
                         </a>
