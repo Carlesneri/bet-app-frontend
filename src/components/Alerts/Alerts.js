@@ -4,9 +4,11 @@ import {getAlerts} from '../../getAlerts'
 import './Alerts.css'
 import star from '../../images/star.png'
 
-export default function Alerts({ state }){   
+export default function Alerts(){   
 
-    const { alertsOP, alertsDrop } = getAlerts(state)
+    const state = {}
+
+    const { alertsOP = [], alertsDrop = [] } = getAlerts(state)
 
     const [alerted, setAlerted ] = useState(alertsOP)
     

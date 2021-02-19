@@ -4,8 +4,8 @@ import { getBet365href, getOPhref, getSportEmoji } from '../../utils'
 import bet365Icon from '../../icons/bet365.ico'
 import pinnacleIcon from '../../icons/pinnacleIcon.png'
 
-function LastMatches({state = []}){
-
+function LastMatches(){
+    const state = []
     // console.log(state);
     return <div className='last-matches'>
         {state.map(match => {

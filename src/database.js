@@ -9,6 +9,13 @@ firebase.auth().signInAnonymously().catch(err => console.log(err))
 
 export const db = app.database().ref()
 
+export function getMatches(stateSetter){
+  const dbOP = db.child('matches')
+  dbOP.on("value", snapshot =>{    
+    stateSetter(snapshot.val())
+  })
+}
+
 export function getOddsPortalPartidos(stateSetter){
   const dbOP = db.child('oddsportal')
   dbOP.on("value", snapshot =>{     
@@ -136,6 +143,7 @@ export function getOddsPortalPartidos(stateSetter){
         })
       })
     }
+
     stateSetter({partidosOP})
   })
   
@@ -147,6 +155,15 @@ export function getOddsPortalPartidos(stateSetter){
     return Math.round(1000 * -1 * (1 / highCuota - 1 / averCuota)) / 10;
   }  
 }
+
+function getPercent(aver, high) {
+  const lastAverI = aver.length - 1;
+  const lastHighI = high.length - 1;
+  const averCuota = aver[lastAverI] ? aver[lastAverI].cuota : 1;
+  const highCuota = high[lastHighI] ? high[lastHighI].cuota : 1;
+  return Math.round(1000 * -1 * (1 / highCuota - 1 / averCuota)) / 10;
+}  
+
 
 export function getDropPartidos(stateSetter){
   const dbPinnacle = db.child('pinnacle')
