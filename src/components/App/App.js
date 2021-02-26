@@ -4,7 +4,7 @@ import Nav from "../Nav/Nav";
 import RouterManager from "../RouterManager/RouterManager";
 import "./App.css";
 import Alerts from "../Alerts/Alerts";
-import NewMatchesSidebar from "../NewMatchesSidebar";
+// import NewMatchesSidebar from "../NewMatchesSidebar";
 import { PartidosProvider } from "../../PartidosContext";
 
 const App = () => {
@@ -19,6 +19,9 @@ const App = () => {
             <Switch>
               <Route path="/" exact>
                 <RouterManager component="home" />
+              </Route>
+              <Route path="/matches">
+                <RouterManager component="matches" />
               </Route>
               <Route path="/comparator">
                 <RouterManager component="comparator" />
@@ -42,9 +45,9 @@ const App = () => {
             <div className="alerts">
               <Alerts />
             </div>
-            <div className="newMatches">
+            {/* <div className="newMatches">
               <NewMatchesSidebar />
-            </div>
+            </div> */}
           </div>
         </div>
       </HashRouter>

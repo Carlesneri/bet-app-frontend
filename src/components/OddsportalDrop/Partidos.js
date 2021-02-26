@@ -7,7 +7,16 @@ import NoPartidos from "../NoPartidos/NoPartidos";
 import { PartidosContext } from "../../PartidosContext";
 
 const Partidos = () => {
-  const partidos = []
+  const { comparatorMatches } = useContext(PartidosContext);
+
+  const partidos = comparatorMatches.partidosOP
+
+  partidos && partidos.sort((a, b) => {
+    const aMax = Math.max(a.percent1, a.percent2, a.percent3);
+    const bMax = Math.max(b.percent1, b.percent2, b.percent3);
+    return bMax - aMax
+  })
+
   const op = []
 
   const MIN_PERCENT = 1;
@@ -15,7 +24,7 @@ const Partidos = () => {
     "display: none";
   };
 
-  if (partidos.length && op) {
+  if (partidos && partidos.length && op) {
     return (
       <div className="partidos-container">
         <div id="Partidos" className="partidos">

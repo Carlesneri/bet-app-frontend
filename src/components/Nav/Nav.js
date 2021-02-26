@@ -6,11 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCalculator} from '@fortawesome/free-solid-svg-icons'
 import Calculator from '../Calculator/Calculator';
 
-const Nav = () => {    
-    const naviLinkElement = document.querySelectorAll('.navi-link')
-    naviLinkElement.forEach( link => {
-        link.addEventListener('click', () => window.scrollTo(0, 0))
-    })
+const Nav = () => {   
+    const scrollTop = () => window.scrollTo(0, 0)
+    // const naviLinkElement = document.querySelectorAll('.navi-link')
+    // naviLinkElement.forEach( link => {
+    //     link.addEventListener('click', () => window.scrollTo(0, 0))
+    // })
     const [toolsStyle, toolsHandler] = useState({display: 'none'})
     const displayValue = () => toolsStyle.display === 'none' ? 
         toolsHandler({display: 'block'})
@@ -24,11 +25,18 @@ const Nav = () => {
                         <img src={star} alt="home"/>
                     </NavLink>
                 </div>
-                <div className="navi-links">
+                <div className="navi-links" onClick={scrollTop}>
                     <div className="navi-link">
                         <NavLink to="/comparator" activeClassName="chosen">
                             <p>
                                 Comparator
+                            </p>
+                        </NavLink>
+                    </div>
+                    <div className="navi-link">
+                        <NavLink to="/matches" activeClassName="chosen">
+                            <p>
+                                Matches
                             </p>
                         </NavLink>
                     </div>

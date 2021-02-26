@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "../Home/Home";
+import Matches from "../Matches/index";
 import OddsportalDrop from "../OddsportalDrop/OddsportalDrop";
 import Drop from "../Drop/Drop";
 // import TennisFinder from '../Tennis/TennisFinder'
@@ -10,8 +11,8 @@ import LastMatches from "../LastMatches";
 
 const RouterManager = ({ component }) => {
   
-  let homeDisplay, comparatorDisplay, dropDisplay, opDisplay, lastDisplay;
-  homeDisplay = comparatorDisplay = dropDisplay = opDisplay = lastDisplay = {
+  let homeDisplay, matchesDisplay, comparatorDisplay, dropDisplay, opDisplay, lastDisplay;
+  homeDisplay = matchesDisplay = comparatorDisplay = dropDisplay = opDisplay = lastDisplay = {
     display: "none",
   };
   const activeComponent = { display: "block" };
@@ -19,6 +20,9 @@ const RouterManager = ({ component }) => {
   switch (component) {
     case "home":
       homeDisplay = activeComponent;
+      break;
+    case "matches":
+      matchesDisplay = activeComponent;
       break;
     case "comparator":
       comparatorDisplay = activeComponent;
@@ -43,6 +47,9 @@ const RouterManager = ({ component }) => {
     <>
       <div style={homeDisplay}>
         <Home />
+      </div>
+      <div style={matchesDisplay}>
+        <Matches />
       </div>
       <div style={comparatorDisplay}>
         <OddsportalDrop />

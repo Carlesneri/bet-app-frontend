@@ -12,7 +12,12 @@ export const db = app.database().ref()
 export function getMatches(stateSetter){
   const dbOP = db.child('matches')
   dbOP.on("value", snapshot =>{    
-    stateSetter(snapshot.val())
+    const matches = []
+    snapshot.forEach(el => {
+      matches.push(el.val())
+    })
+    // console.log(matches);
+    stateSetter(matches)
   })
 }
 
@@ -84,45 +89,7 @@ export function getOddsPortalPartidos(stateSetter){
             return ({cuota, time})
           });
         }
-        
-        // dbOP.child(name + "/aver1").once("value", snapChild => {
-        // });
-        // dbOP.child(name + "/aver2").once("value", snapChild => {
-        //   snapChild.forEach(data => {
-        //     const cuota = data.val().cuota;
-        //     const time = data.val().time;
-        //     aver2.push({ cuota, time });
-        //   });
-        // });
-        // dbOP.child(name + "/aver3").once("value", snapChild => {
-        //   snapChild.forEach(data => {
-        //     const cuota = data.val().cuota;
-        //     const time = data.val().time;
-        //     aver3.push({ cuota, time });
-        //   });
-        // });
-        // dbOP.child(name + "/high1").once("value", snapChild => {
-        //   snapChild.forEach(data => {
-        //     const cuota = data.val().cuota;
-        //     const time = data.val().time;
-        //     high1.push({ cuota, time });
-        //   });
-        // });
-        // dbOP.child(name + "/high2").once("value", snapChild => {
-        //   snapChild.forEach(data => {
-        //     const cuota = data.val().cuota;
-        //     const time = data.val().time;
-        //     high2.push({ cuota, time });
-        //   });
-        // });
-        // dbOP.child(name + "/high3").once("value", snapChild => {
-        //   snapChild.forEach(data => {
-        //     const cuota = data.val().cuota;
-        //     const time = data.val().time;
-        //     high3.push({ cuota, time });
-        //   });
-        // });     
-        
+                
         percent1 = getPercent(aver1, high1).toString();
         percent2 = getPercent(aver2, high2).toString();
         percent3 = getPercent(aver3, high3).toString();
@@ -146,7 +113,7 @@ export function getOddsPortalPartidos(stateSetter){
 
     stateSetter({partidosOP})
   })
-  
+
   function getPercent(aver, high) {
     const lastAverI = aver.length - 1;
     const lastHighI = high.length - 1;
@@ -156,12 +123,19 @@ export function getOddsPortalPartidos(stateSetter){
   }  
 }
 
-function getPercent(aver, high) {
-  const lastAverI = aver.length - 1;
-  const lastHighI = high.length - 1;
-  const averCuota = aver[lastAverI] ? aver[lastAverI].cuota : 1;
-  const highCuota = high[lastHighI] ? high[lastHighI].cuota : 1;
-  return Math.round(1000 * -1 * (1 / highCuota - 1 / averCuota)) / 10;
+export async function getPlayers(stateSetter) {
+  const dbOP = db.child('players')
+  dbOP.on("value", snapshot =>{    
+    const players = []
+    snapshot.forEach(el => {
+      players.push(el.val())
+    })
+    stateSetter(players)
+  })
+}
+
+export function getPercent(aver, high) {
+  return Math.round(1000 * -1 * (1 / high - 1 / aver)) / 10
 }  
 
 
