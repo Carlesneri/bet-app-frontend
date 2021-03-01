@@ -123,7 +123,7 @@ export function getOddsPortalPartidos(stateSetter){
   }  
 }
 
-export async function getPlayers(stateSetter) {
+export function getPlayers(stateSetter) {
   const dbOP = db.child('players')
   dbOP.on("value", snapshot =>{    
     const players = []
@@ -131,6 +131,12 @@ export async function getPlayers(stateSetter) {
       players.push(el.val())
     })
     stateSetter(players)
+  })
+}
+
+export function getPlayerData(playerName, stateSetter) {
+  db.child(`players/${playerName}`).on("value", snapshot => {
+    stateSetter(snapshot.val())
   })
 }
 

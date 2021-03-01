@@ -26,19 +26,19 @@ const App = () => {
               <Route path="/comparator">
                 <RouterManager component="comparator" />
               </Route>
-              <Route path="/drop">
+              {/* <Route path="/drop">
                 <RouterManager component="drop" />
-              </Route>
+              </Route> */}
               {/* 
               <Route path='/tennis'>
               <RouterManager component='tennis' partidos={this.state} />  
             </Route> */}
-              <Route path="/op">
+              {/* <Route path="/op">
                 <RouterManager component="op" />
-              </Route>
-              <Route path="/last">
+              </Route> */}
+              {/* <Route path="/last">
                 <RouterManager component="last" />
-              </Route>
+              </Route> */}
             </Switch>
           </div>
           <div className="right-bar">

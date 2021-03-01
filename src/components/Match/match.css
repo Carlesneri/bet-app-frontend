@@ -1,8 +1,9 @@
 .match {
-  margin: .5rem;
+  margin: .8rem;
   width: 100%;
   max-width: 500px;
   text-align: center;
+  border-bottom: 1px solid #bcbfc2;
 }
 .match .title {
   font-size: 1.2rem;
@@ -12,4 +13,12 @@
 }
 .player {
   margin: 0 auto;
+}
+.perc {
+  font-weight: bold;
+}
+.match td {
+  padding: .1rem .5rem;
+  vertical-align: middle;
+  color: white;
 }

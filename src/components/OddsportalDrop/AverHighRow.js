@@ -36,7 +36,7 @@ const AverHighRow = ({ aver, high, percent }) => {
               <div className="cuota-list">
                 {aver.map((data, index) => {     
                   const style = getStyle('aver', index);         
-                  return <Cuota key={data.time} time={data.time} cuota={data.cuota} style={style}/>;
+                  return <Cuota key={`${data.time}-${index}`} time={data.time} cuota={data.cuota} style={style}/>;
                 })}
               </div>
             </div>
@@ -45,7 +45,7 @@ const AverHighRow = ({ aver, high, percent }) => {
               <div className="cuota-list">
                 {high.map((data, index) => {
                   const style = getStyle('high', index);         
-                  return <Cuota key={data.time} time={data.time} cuota={data.cuota} style={style}/>;
+                  return <Cuota key={`${data.time}-${index}`} time={data.time} cuota={data.cuota} style={style}/>;
                 })}
               </div>
             </div>

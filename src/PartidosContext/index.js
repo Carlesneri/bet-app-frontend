@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react"
 import star from '../images/star.png'
-import { getMatches, getOddsPortalPartidos, getPlayers } from "../database"
+import { getMatches, getOddsPortalPartidos } from "../database"
 import { getAlerts } from "../getAlerts"
 
 const PartidosContext = createContext()
@@ -20,13 +20,13 @@ const PartidosProvider = ({ children }) => {
   const [isFirstAlerts, setIsFirstAlerts] = useState(true)
   const [matches, setMatches] = useState([])
   const [comparatorMatches, setComparatorMatches] = useState([])
-  const [players, setPlayers] = useState([])
+  // const [players, setPlayers] = useState([])
   const [alerts, setAlerts] = useState([])
 
   useEffect(() => {
     getMatches(setMatches)
     getOddsPortalPartidos(setComparatorMatches)
-    getPlayers(setPlayers)
+    // getPlayers(setPlayers)
   }, [])
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const PartidosProvider = ({ children }) => {
   },[comparatorMatches, alerts, isFirstAlerts])
 
   return (
-    <PartidosContext.Provider value={{ matches, comparatorMatches, players, alerts }}>
+    <PartidosContext.Provider value={{ matches, comparatorMatches, alerts }}>
       {children}
     </PartidosContext.Provider>
   )
