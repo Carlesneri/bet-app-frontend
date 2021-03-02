@@ -64,7 +64,8 @@
 
 @media only screen and (max-width: 600px) {
     .navi-links {
-        display: block;  
+        display: flex;
+        flex-wrap: wrap;  
     }
 }
   

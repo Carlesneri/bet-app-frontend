@@ -9,3 +9,9 @@ h1 {
   align-items: center;
   margin: 1rem;
 }
+@media (max-width: 600px) {
+  .matches {
+    font-size: .8em;
+    margin: .4rem;
+  }
+}

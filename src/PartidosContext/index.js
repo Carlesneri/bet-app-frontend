@@ -30,20 +30,24 @@ const PartidosProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
+    console.log('setAlerts')
+    
     let {alertsOP} = getAlerts(comparatorMatches)
     if(alertsOP.length && !alerts.length){
       setAlerts(alertsOP)
       setIsFirstAlerts(false)
     }
     if(!isFirstAlerts) {
+      let isNewAlert = false
       alertsOP.forEach(alert => {
         const isAlerted = alerts.find(alerted => alerted.name === alert.name)
         if(!isAlerted) {
-          console.log([...alerts, alert])
-          setAlerts([...alerts, alert])
+          isNewAlert = true
+          // console.log([...alerts, alert])
           notificate(alert)
         }
       })
+      isNewAlert && setAlerts(alertsOP)
     }
   },[comparatorMatches, alerts, isFirstAlerts])
 
