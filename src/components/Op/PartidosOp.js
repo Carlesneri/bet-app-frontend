@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PartidoOp from './PartidoOp'
 import NoPartidos from '../NoPartidos/NoPartidos'
-import UpArrow from '../UpArrow/UpArrow';
+import UpArrow from '../UpArrow';
 import './PartidosOp.css'
 
 class PartidosOp extends Component{

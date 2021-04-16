@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Partido from "./Partido";
-import UpArrow from "../UpArrow/UpArrow";
+import UpArrow from "../UpArrow";
 import "../Nav/Nav.css";
 import "./Partidos.css";
 import NoPartidos from "../NoPartidos/NoPartidos";

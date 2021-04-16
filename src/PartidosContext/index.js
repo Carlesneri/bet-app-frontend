@@ -30,7 +30,7 @@ const PartidosProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    console.log('setAlerts')
+    // console.log('setAlerts')
     
     let {alertsOP} = getAlerts(comparatorMatches)
     if(alertsOP.length && !alerts.length){

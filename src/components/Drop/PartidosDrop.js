@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PartidoDrop from './PartidoDrop'
-import UpArrow from '../UpArrow/UpArrow'
+import UpArrow from '../UpArrow'
 //import NoPartidos from '../NoPartidos/NoPartidos'
 import './PartidosDrop.css';
 

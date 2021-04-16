@@ -1,22 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react"
 import "./match.css"
 import { getPlayerData } from '../../database'
-
-const greenColor = '#009432'
-const redColor = "#EA2027"
-const greyColor = "#bcbfc2"
+import { percentStyle as percentStyleUtil, setCoefColor as setCoefColorUtil } from '../../utils'
 
 const Match = ({ match }) => {
 
-  const percentStyle = useCallback(perc => {
-    return {fontSize: Math.round(perc) * 1.5 + 10}
-  }, [])
+  const percentStyle = useCallback(percentStyleUtil, [])
   
 
-  const setCoefColor = useCallback(cuof => {
-    if(cuof) return cuof > 0 ? greenColor : redColor
-    return greyColor
-  }, [])
+  const setCoefColor = useCallback(setCoefColorUtil, [])
 
 
   const [player1Data, setPlayer1Data] = useState({})

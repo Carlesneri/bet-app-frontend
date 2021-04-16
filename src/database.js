@@ -37,9 +37,12 @@ export function getOddsPortalPartidos(stateSetter){
         let percent2 = 0;
         let percent3 = 0;
 
-        const name = match.val().name;
-        const url = match.val().url;
-        const last = match.val().last;
+        const name = match.val().name
+        const url = match.val().url
+        const last = match.val().last
+        const sport = match.val().sport
+        const player1 = match.val().player1
+        const player2 = match.val().player2
 
         if(match.val().aver1){
           const aver1Keys = Object.keys(match.val().aver1)
@@ -96,6 +99,9 @@ export function getOddsPortalPartidos(stateSetter){
         
         partidosOP.push({
           name,
+          sport,
+          player1,
+          player2,
           url,
           last,
           aver1,
@@ -138,6 +144,11 @@ export function getPlayerData(playerName, stateSetter) {
   db.child(`players/${playerName}`).on("value", snapshot => {
     stateSetter(snapshot.val())
   })
+}
+
+export function getTeamData(sport, teamName, stateSetter) {
+  db.child(`teams/${sport}/${teamName}`)
+  .on("value", snapshot =>  stateSetter(snapshot.val()))
 }
 
 export function getPercent(aver, high) {
