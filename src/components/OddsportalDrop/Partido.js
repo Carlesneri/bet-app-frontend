@@ -1,34 +1,24 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useContext, useMemo } from 'react'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faEye as fasEye } from '@fortawesome/free-solid-svg-icons'
+import { faEye as farEye } from '@fortawesome/free-regular-svg-icons'
 import './Partido.css'
 import AverHighRow from './AverHighRow'
 import { getTeamData } from '../../database'
-import { setCoefColor as setCoefColorUtil } from '../../utils'
+import { setCoefColor as setCoefColorUtil, eyeStyle } from '../../utils'
+import { PartidosContext } from '../../PartidosContext'
+import { COMPARATOR_ACTIONS } from '../../reducers/comparatorReducer'
 
 
 function Partido({ partido }) {
+
+  // useEffect(() => {
+  //   console.log(partido.visited)
+  // }, [partido])
+
+  const { dispatchComparatorMatches } = useContext(PartidosContext)
+
   const NUM_CUOTAS = 8
-
-  // console.log(partido)
-
-  let {
-    aver1,
-    aver2,
-    aver3,
-    high1,
-    high2,
-    high3,
-    name,
-    player1,
-    player2,
-    url,
-    sport,
-    last,
-    percent1,
-    percent2,
-    percent3,
-  } = partido
-
-  // const { partidoOp } = partido
 
   const filter = useCallback((array, NUM_CUOTAS) => {
     if (!array) return 1;
@@ -39,65 +29,81 @@ function Partido({ partido }) {
 
   const setCoefColor = useCallback(setCoefColorUtil, [])
 
-
-//   function filter(array, NUM_CUOTAS){
-//   if (!array) return 1;
-//   else return array.filter((data, index) =>
-//   array.length - index < NUM_CUOTAS
-//   )
-// }
-
-
   //-->Obtenemos datos de la url
-  const urlSplit = url.split('/')
+  const urlSplit = partido.url.split('/')
   let i = urlSplit.length
-  const game = urlSplit[i - 5]
-  const country = urlSplit[i - 4]
-  const tournament = urlSplit[i - 3].replace(/-/g, ' ')
+  partido.game = urlSplit[i - 5]
+  partido.country = urlSplit[i - 4]
+  partido.tournament = urlSplit[i - 3].replace(/-/g, ' ')
 
-  aver1 = filter(aver1, NUM_CUOTAS)
-  aver2 = filter(aver2, NUM_CUOTAS)
-  aver3 = filter(aver3, NUM_CUOTAS)
-  high1 = filter(high1, NUM_CUOTAS)
-  high2 = filter(high2, NUM_CUOTAS)
-  high3 = filter(high3, NUM_CUOTAS)
+  partido.aver1 = filter(partido.aver1, NUM_CUOTAS)
+  partido.aver2 = filter(partido.aver2, NUM_CUOTAS)
+  partido.aver3 = filter(partido.aver3, NUM_CUOTAS)
+  partido.high1 = filter(partido.high1, NUM_CUOTAS)
+  partido.high2 = filter(partido.high2, NUM_CUOTAS)
+  partido.high3 = filter(partido.high3, NUM_CUOTAS)
 
-  const minutesAgo = ((Date.now() - last) / (1000 * 60)).toFixed(1)
+  const minutesAgo = ((Date.now() - partido.last) / (1000 * 60)).toFixed(1)
   const minAgoText = minutesAgo + ' min. ago'
 
-  const bgAlpha = 1 - minutesAgo / 60
+  const titleStyle = useMemo(() => {
+    const bgAlpha = 1 - minutesAgo / 60
+    return {
+      backgroundColor: `rgba(0, 100, 0, ${bgAlpha})`,
+    }
+  }, [minutesAgo])
 
-  const titleStyle = {
-    backgroundColor: `rgba(0, 100, 0, ${bgAlpha})`,
+  const setIsVisited = () => dispatchComparatorMatches({ type: COMPARATOR_ACTIONS.IS_VISITED, payload: partido.name})
+
+  function toggleVisited() {
+    return dispatchComparatorMatches({ type: COMPARATOR_ACTIONS.TOGGLE_VISITED, payload: partido.name})
   }
-
-  // const minutesAgoStyle = {opacity: 2 / (minutesAgo + 1)}
 
   const [team1Data, setTeam1Data] = useState({})
   const [team2Data, setTeam2Data] = useState({})
 
   useEffect(() => {
-    getTeamData(sport, player1, setTeam1Data)
-    getTeamData(sport, player2, setTeam2Data)
-  }, [sport, player1, player2])
+    getTeamData(partido.sport, partido.player1, setTeam1Data)
+    getTeamData(partido.sport, partido.player2, setTeam2Data)
+    return () => {
+      setTeam1Data(null)
+      setTeam2Data(null)
+    }
+  }, [partido.sport, partido.player1, partido.player2])
 
-  // const {index} = this.props
-  // //-->Parpadeo segundos
-  // const parpadeoEl = document.getElementById(index)
-  // const parpadeo = element => {
-  //   //parpadeoEl.classList.add('parpadeo')
-  //   element.innerText = ''
-  //   setTimeout(() => element.innerText = '"', 1000)
-  // }
-  // if(parpadeoEl) {
-  //   setInterval(parpadeo(parpadeoEl), 2000)
-  // }
+  let {
+    aver1,
+    aver2,
+    aver3,
+    high1,
+    high2,
+    high3,
+    name,
+    // player1,
+    // player2,
+    url,
+    // sport,
+    // last,
+    percent1,
+    percent2,
+    percent3,
+    game, 
+    country,
+    tournament,
+    visited = false
+  } = partido
 
   return (
     <div className='partido card-bg'>
       <div className='partido-title-op' style={titleStyle}>
+        <div className="partido-title-eye" style={eyeStyle(visited)} onClick={toggleVisited} >
+          {visited ? 
+            <FontAwesomeIcon icon={fasEye} />
+            : <FontAwesomeIcon icon={farEye} />
+          }
+        </div>
         <div className='partido-name-op'>
-          <a href={url} target='_blank' rel='nofollow noopener noreferrer'>
+          <a onClick={setIsVisited} href={url} target='_blank' rel='nofollow noopener noreferrer'>
             {name}
           </a>
         </div>

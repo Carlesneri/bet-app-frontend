@@ -3,20 +3,16 @@ import { PartidosContext } from "../../PartidosContext"
 import "./Alerts.css"
 
 export default function Alerts() {
-  const alertsOP = useContext(PartidosContext).alerts
-  // const { alertsOP = [], alertsDrop = [] } = alerts
+  const alerts = useContext(PartidosContext).alerts
 
-  // alertsOP = []
-  const alertsDrop = []
-
-  if (alertsOP.length) {
+  if (alerts.length) {
     return (
       <div>
-        {alertsOP.length > 0 && (
+        {alerts.length > 0 && (
           <div className="alerts-block">
             <h6>Comparator</h6>
             <div className="alerts-list">
-              {alertsOP.map((alert, index) => {
+              {alerts.map((alert, index) => {
                 return (
                   <div key={index}>
                     <a
@@ -32,7 +28,7 @@ export default function Alerts() {
             </div>
           </div>
         )}
-        {alertsDrop.length > 0 && (
+        {/* {alertsDrop.length > 0 && (
           <div className="alerts-block">
             <h6>Drop</h6>
             <hr />
@@ -52,7 +48,7 @@ export default function Alerts() {
               })}
             </div>
           </div>
-        )}
+        )} */}
         {/* {alertsTennis.length > 0 &&
                     <div className="alerts-block">
                         <h6>Tennis</h6>

@@ -13,10 +13,13 @@
     display: flex;
     justify-content: center;
 }
+.partido-name-op {
+  margin: 0 1rem;
+}
 .partido-name-op a{
   font-weight: 600;
-    display: flex;
-    text-align: center;
+  display: flex;
+  text-align: center;
 }
 .partido-body{
   display: flex;
@@ -56,4 +59,7 @@
 }
 .partido-op span{
   margin: 0 1em;
+}
+.partido-title-eye {
+  cursor: pointer;
 }

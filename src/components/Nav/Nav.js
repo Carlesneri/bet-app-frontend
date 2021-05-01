@@ -12,10 +12,9 @@ const Nav = () => {
     // naviLinkElement.forEach( link => {
     //     link.addEventListener('click', () => window.scrollTo(0, 0))
     // })
-    const [toolsStyle, toolsHandler] = useState({display: 'none'})
+    const [toolsStyle, setToolsStyle] = useState({display: 'none'})
     const displayValue = () => toolsStyle.display === 'none' ? 
-        toolsHandler({display: 'block'})
-        : toolsHandler({display: 'none'})
+    setToolsStyle({display: 'block'}) : setToolsStyle({display: 'none'})
 
     return (
         <div className="navi">
@@ -40,7 +39,7 @@ const Nav = () => {
                             </p>
                         </NavLink>
                     </div>
-                    <div className="navi-link">
+                    {/* <div className="navi-link">
                         <NavLink to="/drop" activeClassName="chosen">
                             <p>
                                 Drop
@@ -67,7 +66,7 @@ const Nav = () => {
                                 Last
                             </p>    
                         </NavLink>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="tools-group">

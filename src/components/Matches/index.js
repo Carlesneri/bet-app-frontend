@@ -4,6 +4,7 @@ import { PartidosContext } from '../../PartidosContext'
 import Match from '../Match/index.js'
 import { getPercent } from '../../database'
 import './matches.css'
+import NoPartidos from '../NoPartidos/NoPartidos'
 
 const Matches = () => {
   const { matches } = useContext(PartidosContext)
@@ -30,7 +31,7 @@ const Matches = () => {
       </div>
     </div>
   ) : (
-    <h1>Waiting for Matches</h1>
+    <NoPartidos />
   )
 }
 

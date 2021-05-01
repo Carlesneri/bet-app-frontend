@@ -34,4 +34,7 @@ function setCoefColor(cuof) {
   return greyColor
 }
 
-export { getBet365href, getOPhref, getSportEmoji, percentStyle, setCoefColor }
+const eyeStyle = visited => visited ? { color: "#bcbfc2"} : {color: "white"}
+
+
+export { getBet365href, getOPhref, getSportEmoji, percentStyle, setCoefColor, eyeStyle }

@@ -2,6 +2,8 @@ import firebase from "firebase/app";
 import { DB_CONFIG } from "./config/config";
 import "firebase/database";
 import "firebase/auth";
+import { MATCHES_ACTIONS } from "./reducers/matchesReducer";
+import { COMPARATOR_ACTIONS } from "./reducers/comparatorReducer";
 
 const app = firebase.initializeApp(DB_CONFIG);
 
@@ -9,7 +11,7 @@ firebase.auth().signInAnonymously().catch(err => console.log(err))
 
 export const db = app.database().ref()
 
-export function getMatches(stateSetter){
+export function getMatches(dispatch){
   const dbOP = db.child('matches')
   dbOP.on("value", snapshot =>{    
     const matches = []
@@ -17,11 +19,11 @@ export function getMatches(stateSetter){
       matches.push(el.val())
     })
     // console.log(matches);
-    stateSetter(matches)
+    dispatch({ type: MATCHES_ACTIONS.ADD, payload: matches })
   })
 }
 
-export function getOddsPortalPartidos(stateSetter){
+export function getOddsPortalPartidos(dispatch){
   const dbOP = db.child('oddsportal')
   dbOP.on("value", snapshot =>{     
     let partidosOP = []
@@ -117,7 +119,7 @@ export function getOddsPortalPartidos(stateSetter){
       })
     }
 
-    stateSetter({partidosOP})
+    dispatch({type: COMPARATOR_ACTIONS.ADD, payload: partidosOP })
   })
 
   function getPercent(aver, high) {

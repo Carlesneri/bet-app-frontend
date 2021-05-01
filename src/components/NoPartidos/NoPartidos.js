@@ -4,7 +4,7 @@ import './NoPartidos.css'
 const NoPartidos = () => (
   <div className="no-partidos-container">
     <div className="no_partidos">
-      <h2>No hay partidos que mostrar.</h2>
+      <h2>Waiting for matches</h2>
     </div>
   </div>
 );

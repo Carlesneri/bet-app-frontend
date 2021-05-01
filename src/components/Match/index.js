@@ -1,15 +1,20 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useState, useEffect, useCallback, useContext } from "react"
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faEye as fasEye } from '@fortawesome/free-solid-svg-icons'
+import { faEye as farEye } from '@fortawesome/free-regular-svg-icons'
 import "./match.css"
 import { getPlayerData } from '../../database'
-import { percentStyle as percentStyleUtil, setCoefColor as setCoefColorUtil } from '../../utils'
+import { percentStyle as percentStyleUtil, setCoefColor as setCoefColorUtil, eyeStyle } from '../../utils'
+import { PartidosContext } from '../../PartidosContext'
+import { MATCHES_ACTIONS } from '../../reducers/matchesReducer'
 
 const Match = ({ match }) => {
 
-  const percentStyle = useCallback(percentStyleUtil, [])
-  
+  const { dispatchMatches } = useContext(PartidosContext)
+
+  const percentStyle = useCallback(percentStyleUtil, [])  
 
   const setCoefColor = useCallback(setCoefColorUtil, [])
-
 
   const [player1Data, setPlayer1Data] = useState({})
   const [player2Data, setPlayer2Data] = useState({})
@@ -17,16 +22,33 @@ const Match = ({ match }) => {
   useEffect(() => {
     getPlayerData(match.player1Name, setPlayer1Data)
     getPlayerData(match.player2Name, setPlayer2Data)
+
+    return () => {
+      setPlayer1Data(null)
+      setPlayer2Data(null)
+    }
   }, [match.player1Name, match.player2Name])
 
-  // player1Data && player1Data.surface && player1Data.surface[match.surfaceCode] && console.log(player1Data.surface[match.surfaceCode]) 
+  function toggleVisited() {
+    return dispatchMatches({ type: MATCHES_ACTIONS.TOGGLE_VISITED, payload: match.name})
+  }
+
+  const setIsVisited = () => dispatchMatches({ type: MATCHES_ACTIONS.IS_VISITED, payload: match.name})
 
   return (
     <table className="match">
       <tbody>
         <tr className="title">
+          <td className="match-title-eye" style={eyeStyle(match.visited)} onClick={toggleVisited} >
+            {match.visited ? 
+              <FontAwesomeIcon icon={fasEye} />
+              : <FontAwesomeIcon icon={farEye} />
+            }
+          </td>
           <td>
-            <a href={match.url} target="_blank" rel="nofollow noopener noreferrer">
+            <div className="match-title-eye" style={eyeStyle()} onClick={toggleVisited} >
+            </div>
+            <a href={match.url} target="_blank" rel="nofollow noopener noreferrer" onClick={setIsVisited}>
               {match.player1Name} - {match.player2Name}
             </a>
           </td>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, HashRouter } from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Nav from "../Nav/Nav";
 import RouterManager from "../RouterManager/RouterManager";
 import "./App.css";
@@ -10,7 +10,7 @@ import { PartidosProvider } from "../../PartidosContext";
 const App = () => {
   return (
     <PartidosProvider>
-      <HashRouter>
+      <BrowserRouter>
         <div className="nav-container">
           <Nav />
         </div>
@@ -50,7 +50,7 @@ const App = () => {
             </div> */}
           </div>
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </PartidosProvider>
   );
   // }

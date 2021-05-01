@@ -23,3 +23,10 @@
   vertical-align: middle;
   color: white;
 }
+.title {
+  display: flex;
+  justify-content: center;
+}
+.match-title-eye {
+  cursor: pointer;
+}
