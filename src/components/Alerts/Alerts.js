@@ -1,9 +1,28 @@
 import React, { useContext } from "react"
 import { PartidosContext } from "../../PartidosContext"
 import "./Alerts.css"
+import {COMPARATOR_ACTIONS} from '../../reducers/comparatorReducer'
+import {MATCHES_ACTIONS} from '../../reducers/matchesReducer'
 
 export default function Alerts() {
-  const alerts = useContext(PartidosContext).alerts
+  const {alerts, dispatchMatches, dispatchComparatorMatches} = useContext(PartidosContext)
+
+  function handleClickAlert(event) {
+    const url = event.target.href
+    const alert = event.target.dataset.alert
+
+    if(url.includes('tennisexplorer')) {
+      dispatchMatches({
+        type: MATCHES_ACTIONS.IS_VISITED,
+        payload: alert
+      })
+    } else {
+      dispatchComparatorMatches({
+        type: COMPARATOR_ACTIONS.IS_VISITED,
+        payload: alert
+      })
+    }
+  }
 
   if (alerts.length) {
     return (
@@ -16,7 +35,9 @@ export default function Alerts() {
                 return (
                   <div key={index}>
                     <a
+                      onClick={handleClickAlert}
                       href={alert.url}
+                      data-alert={alert.name}
                       target="_blank"
                       rel="nofollow noopener noreferrer"
                     >

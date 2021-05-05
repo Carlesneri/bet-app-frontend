@@ -7,6 +7,9 @@ function getSportEmoji(sport) {
     case 'Fútbol':
       emoji = '⚽'
       break
+    case 'soccer':
+      emoji = '⚽'
+      break
 
     case 'Tennis':
       emoji = '🎾'
@@ -34,7 +37,7 @@ function setCoefColor(cuof) {
   return greyColor
 }
 
-const eyeStyle = visited => visited ? { color: "#bcbfc2"} : {color: "white"}
+const eyeStyle = visited => visited ? { color: "rgba(234, 32, 39, .7)"} : {color: "#fff"}
 
 
 export { getBet365href, getOPhref, getSportEmoji, percentStyle, setCoefColor, eyeStyle }

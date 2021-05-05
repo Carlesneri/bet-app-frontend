@@ -13,12 +13,13 @@ export const matchesReducer = (state, action) => {
       const matches = action.payload
       const newState = matches.map(match => {
         const isMatch = state.find(stateMatch => stateMatch.name === match.name)
-        if(isMatch) return {...isMatch, match}
+        if(isMatch) return {...isMatch, ...match}
         return match
       })
       return newState
 
     case MATCHES_ACTIONS.IS_VISITED:
+      // console.log(action.payload)
       return state.map(match => {
         if(match.name === action.payload) {
           return { ...match, visited: true}

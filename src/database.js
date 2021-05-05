@@ -1,15 +1,7 @@
-import firebase from "firebase/app";
-import { DB_CONFIG } from "./config/config";
-import "firebase/database";
-import "firebase/auth";
 import { MATCHES_ACTIONS } from "./reducers/matchesReducer";
 import { COMPARATOR_ACTIONS } from "./reducers/comparatorReducer";
-
-const app = firebase.initializeApp(DB_CONFIG);
-
-firebase.auth().signInAnonymously().catch(err => console.log(err))
-
-export const db = app.database().ref()
+// import { TEAMS_ACTIONS } from "./reducers/teamsReducer";
+import {db} from './index'
 
 export function getMatches(dispatch){
   const dbOP = db.child('matches')
@@ -26,6 +18,7 @@ export function getMatches(dispatch){
 export function getOddsPortalPartidos(dispatch){
   const dbOP = db.child('oddsportal')
   dbOP.on("value", snapshot =>{     
+    // console.log('getOddsPortalPartidos')
     let partidosOP = []
     if(snapshot.val()){
       snapshot.forEach(match => {
@@ -143,14 +136,18 @@ export function getPlayers(stateSetter) {
 }
 
 export function getPlayerData(playerName, stateSetter) {
-  db.child(`players/${playerName}`).on("value", snapshot => {
+  db.child(`players/${playerName}`).once("value", snapshot => {
     stateSetter(snapshot.val())
   })
 }
 
-export function getTeamData(sport, teamName, stateSetter) {
-  db.child(`teams/${sport}/${teamName}`)
-  .on("value", snapshot =>  stateSetter(snapshot.val()))
+export function getTeamData(sport, player, stateSetter) {
+  db.child(`teams/${sport}/${player}`)
+  .once("value", snapshot => {
+    // console.log(snapshot.val())
+    // --> Guardar en estado global
+    stateSetter(snapshot.val())
+  })
 }
 
 export function getPercent(aver, high) {

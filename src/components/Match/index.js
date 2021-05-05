@@ -8,7 +8,7 @@ import { percentStyle as percentStyleUtil, setCoefColor as setCoefColorUtil, eye
 import { PartidosContext } from '../../PartidosContext'
 import { MATCHES_ACTIONS } from '../../reducers/matchesReducer'
 
-const Match = ({ match }) => {
+const Match = ({ match, lastVisit, setLastVisit }) => {
 
   const { dispatchMatches } = useContext(PartidosContext)
 
@@ -24,8 +24,8 @@ const Match = ({ match }) => {
     getPlayerData(match.player2Name, setPlayer2Data)
 
     return () => {
-      setPlayer1Data(null)
-      setPlayer2Data(null)
+      setPlayer1Data({})
+      setPlayer2Data({})
     }
   }, [match.player1Name, match.player2Name])
 
@@ -35,8 +35,17 @@ const Match = ({ match }) => {
 
   const setIsVisited = () => dispatchMatches({ type: MATCHES_ACTIONS.IS_VISITED, payload: match.name})
 
+  function handleClick() {
+    setIsVisited()
+    setLastVisit(match.name)
+  }
+
+  const isLastVisited = () =>  match.name === lastVisit ? 
+  {border: '1px solid #bcbfc2'} : null
+
+
   return (
-    <table className="match">
+    <table className="match" style={isLastVisited()}>
       <tbody>
         <tr className="title">
           <td className="match-title-eye" style={eyeStyle(match.visited)} onClick={toggleVisited} >
@@ -48,7 +57,7 @@ const Match = ({ match }) => {
           <td>
             <div className="match-title-eye" style={eyeStyle()} onClick={toggleVisited} >
             </div>
-            <a href={match.url} target="_blank" rel="nofollow noopener noreferrer" onClick={setIsVisited}>
+            <a href={match.url} target="_blank" rel="nofollow noopener noreferrer" onClick={handleClick}>
               {match.player1Name} - {match.player2Name}
             </a>
           </td>

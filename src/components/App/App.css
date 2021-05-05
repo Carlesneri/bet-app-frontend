@@ -28,10 +28,11 @@ hr{
     /* border-bottom: 2px solid #121314; */
 }
 .alerts{
-    /* position: fixed; */
+    position: fixed;
     border-bottom: 2px solid #121314;
     width: 100%;
     padding: 10px;
+    overflow-y: scroll;
 }
 .switch-routes{
     width: 70%;

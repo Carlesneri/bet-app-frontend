@@ -54,7 +54,7 @@
 }
 .tool-icon:hover{
     transition: color .3s;
-    color: #EA2027;
+    color: rgb(234, 32, 39);
 }
 .tool-content{
     position: absolute;

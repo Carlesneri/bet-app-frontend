@@ -4,17 +4,12 @@ import { faEye as fasEye } from '@fortawesome/free-solid-svg-icons'
 import { faEye as farEye } from '@fortawesome/free-regular-svg-icons'
 import './Partido.css'
 import AverHighRow from './AverHighRow'
-import { getTeamData } from '../../database'
 import { setCoefColor as setCoefColorUtil, eyeStyle } from '../../utils'
 import { PartidosContext } from '../../PartidosContext'
 import { COMPARATOR_ACTIONS } from '../../reducers/comparatorReducer'
+import {getTeamData} from '../../database'
 
-
-function Partido({ partido }) {
-
-  // useEffect(() => {
-  //   console.log(partido.visited)
-  // }, [partido])
+function Partido({ partido, lastVisit, setLastVisit }) {
 
   const { dispatchComparatorMatches } = useContext(PartidosContext)
 
@@ -59,16 +54,20 @@ function Partido({ partido }) {
     return dispatchComparatorMatches({ type: COMPARATOR_ACTIONS.TOGGLE_VISITED, payload: partido.name})
   }
 
+  function handleClick() {
+    setIsVisited()
+    setLastVisit(partido.name)
+  }
+
+  const isLastVisited = () =>  partido.name === lastVisit ? 
+  {border: '1px solid #bcbfc2'} : null
+
   const [team1Data, setTeam1Data] = useState({})
   const [team2Data, setTeam2Data] = useState({})
 
   useEffect(() => {
     getTeamData(partido.sport, partido.player1, setTeam1Data)
     getTeamData(partido.sport, partido.player2, setTeam2Data)
-    return () => {
-      setTeam1Data(null)
-      setTeam2Data(null)
-    }
   }, [partido.sport, partido.player1, partido.player2])
 
   let {
@@ -94,7 +93,7 @@ function Partido({ partido }) {
   } = partido
 
   return (
-    <div className='partido card-bg'>
+    <div className='partido card-bg' style={isLastVisited()}>
       <div className='partido-title-op' style={titleStyle}>
         <div className="partido-title-eye" style={eyeStyle(visited)} onClick={toggleVisited} >
           {visited ? 
@@ -103,7 +102,7 @@ function Partido({ partido }) {
           }
         </div>
         <div className='partido-name-op'>
-          <a onClick={setIsVisited} href={url} target='_blank' rel='nofollow noopener noreferrer'>
+          <a onClick={handleClick} href={url} target='_blank' rel='nofollow noopener noreferrer'>
             {name}
           </a>
         </div>
