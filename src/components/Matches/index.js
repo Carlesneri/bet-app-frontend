@@ -43,21 +43,25 @@ const Matches = () => {
     Math.max(a.player1Perc, a.player2Perc)
   )
 
-  return filteredPartidos.length ? (
+  return matches.length ? (
     <>
       <nav className="partidos-nav">
         <button onClick={() => setFiltered(!filtered)}>
           {filtered ? 'not visited' : 'all'}
         </button>
       </nav>
-      <div className='matches'>
-        {filteredPartidos.map((match, i) => (
-          <Match key={i} match={match} lastVisit={lastVisit} setLastVisit={setLastVisit} />
-          ))}
-        <div className='up-arrow-container'>
-          <UpArrow />
+      {filteredPartidos.length ? (
+        <div className='matches'>
+          {filteredPartidos.map((match, i) => (
+            <Match key={i} match={match} lastVisit={lastVisit} setLastVisit={setLastVisit} />
+            ))}
+          <div className='up-arrow-container'>
+            <UpArrow />
+          </div>
         </div>
-      </div>
+      ) : (
+        <NoPartidos />
+      )}
     </>
   ) : (
     <NoPartidos />
