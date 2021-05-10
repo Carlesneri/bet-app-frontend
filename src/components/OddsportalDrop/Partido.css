@@ -3,8 +3,13 @@
     margin: .5em;
     border-radius: 3px;
     padding: 1rem;
-    border-bottom: 1px solid #bcbfc2;
+    /* border-bottom: 1px solid #bcbfc2; */
+    border-bottom: 1px solid #000;
 }       
+.partido:hover{
+  background-color: #222;
+}
+
 .partido-title-op{
   display: flex;
   padding: .5rem;

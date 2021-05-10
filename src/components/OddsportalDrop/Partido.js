@@ -8,12 +8,21 @@ import { setCoefColor as setCoefColorUtil, eyeStyle } from '../../utils'
 import { PartidosContext } from '../../PartidosContext'
 import { COMPARATOR_ACTIONS } from '../../reducers/comparatorReducer'
 import {getTeamData} from '../../database'
+import { useCookies } from 'react-cookie'
 
 function Partido({ partido, lastVisit, setLastVisit }) {
+  const [cookies, setCookies] = useCookies(['visited-comparator-matches'])
 
-  const { dispatchComparatorMatches } = useContext(PartidosContext)
+  const {dispatchComparatorMatches } = useContext(PartidosContext)
 
-  const NUM_CUOTAS = 8
+  const wereVisited = partido.visited || false
+  const visitedComparatorMatchesCookie = cookies['visited-comparator-matches'] || []
+  const cookieOpts = {
+    expires: new Date(Date.now() + 3*60*60*1000)
+  }
+
+
+  const NUM_CUOTAS = 9
 
   const filter = useCallback((array, NUM_CUOTAS) => {
     if (!array) return 1;
@@ -48,15 +57,31 @@ function Partido({ partido, lastVisit, setLastVisit }) {
     }
   }, [minutesAgo])
 
-  const setIsVisited = () => dispatchComparatorMatches({ type: COMPARATOR_ACTIONS.IS_VISITED, payload: partido.name})
+  const setIsVisited = () => {
+    dispatchComparatorMatches({ type: COMPARATOR_ACTIONS.IS_VISITED, payload: partido.name})    
 
-  function toggleVisited() {
-    return dispatchComparatorMatches({ type: COMPARATOR_ACTIONS.TOGGLE_VISITED, payload: partido.name})
+    !wereVisited &&
+    setCookies('visited-comparator-matches', [...visitedComparatorMatchesCookie, partido.name], cookieOpts)
   }
 
-  function handleClick() {
+  function toggleVisited() {
+
+    dispatchComparatorMatches({ type: COMPARATOR_ACTIONS.TOGGLE_VISITED, payload: partido.name})
+
+    wereVisited 
+    ? 
+      setCookies('visited-comparator-matches', cookies['visited-comparator-matches'].filter(cookieMatch => cookieMatch !== partido.name), cookieOpts)
+    : 
+      setCookies('visited-comparator-matches', [...visitedComparatorMatchesCookie, partido.name], cookieOpts)
+
+  }
+
+  function handleClickAnchor() {
     setIsVisited()
-    setLastVisit(partido.name)
+  }
+  
+  function handleClickPartido() {
+    setLastVisit(partido.name)    
   }
 
   const isLastVisited = () =>  partido.name === lastVisit ? 
@@ -93,7 +118,7 @@ function Partido({ partido, lastVisit, setLastVisit }) {
   } = partido
 
   return (
-    <div className='partido card-bg' style={isLastVisited()}>
+    <div className='partido card-bg' onClick={handleClickPartido} style={isLastVisited()}>
       <div className='partido-title-op' style={titleStyle}>
         <div className="partido-title-eye" style={eyeStyle(visited)} onClick={toggleVisited} >
           {visited ? 
@@ -102,7 +127,7 @@ function Partido({ partido, lastVisit, setLastVisit }) {
           }
         </div>
         <div className='partido-name-op'>
-          <a onClick={handleClick} href={url} target='_blank' rel='nofollow noopener noreferrer'>
+          <a onClick={handleClickAnchor} href={url} target='_blank' rel='nofollow noopener noreferrer'>
             {name}
           </a>
         </div>

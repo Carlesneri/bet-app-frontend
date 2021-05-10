@@ -7,8 +7,16 @@ import { getPlayerData } from '../../database'
 import { percentStyle as percentStyleUtil, setCoefColor as setCoefColorUtil, eyeStyle } from '../../utils'
 import { PartidosContext } from '../../PartidosContext'
 import { MATCHES_ACTIONS } from '../../reducers/matchesReducer'
+import { useCookies } from "react-cookie"
 
 const Match = ({ match, lastVisit, setLastVisit }) => {
+  const [cookies, setCookies] = useCookies(['visited-matches'])
+
+  const wereVisited = match.visited || false
+  const visitedMatchesCookie = cookies['visited-matches'] || []
+  const cookieOpts = {
+    expires: new Date(Date.now() + 3*60*60*1000)
+  }
 
   const { dispatchMatches } = useContext(PartidosContext)
 
@@ -30,14 +38,28 @@ const Match = ({ match, lastVisit, setLastVisit }) => {
   }, [match.player1Name, match.player2Name])
 
   function toggleVisited() {
-    return dispatchMatches({ type: MATCHES_ACTIONS.TOGGLE_VISITED, payload: match.name})
+    dispatchMatches({ type: MATCHES_ACTIONS.TOGGLE_VISITED, payload: match.name})
+
+    wereVisited 
+    ? 
+      setCookies('visited-matches', cookies['visited-matches'].filter(cookieMatch => cookieMatch !== match.name), cookieOpts)
+    : 
+      setCookies('visited-matches', [...visitedMatchesCookie, match.name], cookieOpts)
   }
 
-  const setIsVisited = () => dispatchMatches({ type: MATCHES_ACTIONS.IS_VISITED, payload: match.name})
+  const setIsVisited = () => {
+    dispatchMatches({ type: MATCHES_ACTIONS.IS_VISITED, payload: match.name})
 
-  function handleClick() {
+    !wereVisited &&
+    setCookies('visited-matches', [...visitedMatchesCookie, match.name], cookieOpts)
+  }
+
+  function handleClickAnchor() {
     setIsVisited()
-    setLastVisit(match.name)
+  }
+  
+  function handleClickMatch() {
+    setLastVisit(match.name)    
   }
 
   const isLastVisited = () =>  match.name === lastVisit ? 
@@ -45,7 +67,7 @@ const Match = ({ match, lastVisit, setLastVisit }) => {
 
 
   return (
-    <table className="match" style={isLastVisited()}>
+    <table className="match" style={isLastVisited()} onClick={handleClickMatch}>
       <tbody>
         <tr className="title">
           <td className="match-title-eye" style={eyeStyle(match.visited)} onClick={toggleVisited} >
@@ -57,7 +79,7 @@ const Match = ({ match, lastVisit, setLastVisit }) => {
           <td>
             <div className="match-title-eye" style={eyeStyle()} onClick={toggleVisited} >
             </div>
-            <a href={match.url} target="_blank" rel="nofollow noopener noreferrer" onClick={handleClick}>
+            <a href={match.url} target="_blank" rel="nofollow noopener noreferrer" onClick={handleClickAnchor}>
               {match.player1Name} - {match.player2Name}
             </a>
           </td>

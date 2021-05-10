@@ -14,5 +14,20 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  monospace;
+}
+button {
+  font-family: "Dosis", sans-serif;
+  border-radius: 3px;
+  padding: .3rem;
+  border: none;
+  font-weight: bold;
+  transition: all .3s ease;
+}
+button:hover {
+  color: #333;
+  background-color: #ccc;
+}
+button:focus {
+  outline: none;
 }

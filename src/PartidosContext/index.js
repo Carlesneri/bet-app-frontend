@@ -3,7 +3,6 @@ import star from '../images/star.png'
 import { getMatches, getOddsPortalPartidos } from "../database"
 import { getAlerts } from "../getAlerts"
 import { matchesReducer, MATCHES_ACTIONS } from "../reducers/matchesReducer"
-// import { teamsReducer } from "../reducers/teamsReducer"
 import { alertsReducer, ALERTS_ACTIONS } from "../reducers/alertsReducer"
 import { comparatorReducer, COMPARATOR_ACTIONS } from "../reducers/comparatorReducer"
 
@@ -14,9 +13,7 @@ const PartidosProvider = ({ children }) => {
   const [isFirstAlerts, setIsFirstAlerts] = useState(true)
 
   const [comparatorMatches, dispatchComparatorMatches] = useReducer(comparatorReducer, [])
-  // const [teams, dispatchTeams] = useReducer(teamsReducer, [])
   const [matches, dispatchMatches] = useReducer(matchesReducer, [])
-  // const [players, setPlayers] = useState([])
   const [alerts, dispatchAlerts] = useReducer(alertsReducer, [])
 
   useEffect(() => {
@@ -48,37 +45,8 @@ const PartidosProvider = ({ children }) => {
     }
   }
 
-
-  // useEffect(() => {
-
-  //   setInterval(() => {
-  //     console.log('save team data')
-  //     comparatorMatches.forEach(match => {
-  //       if(match.player1){
-  //         const isTeam1 = teams.find(team => team.name === match.player1)
-  //         if(!teams.length || !isTeam1){
-  //           saveTeamData(match.sport, match.player1, dispatchTeams)
-  //         }
-  //       }
-  
-  //       if(match.player2){
-  //         const isTeam2 = teams.find(team => team.name === match.player2)
-  //         if(!teams.length || !isTeam2){
-  //           saveTeamData(match.sport, match.player2, dispatchTeams)
-  //         }
-  //       }
-  //     })
-
-  //   }, 30000)
-
-    // return clearInterval(interval)
-
-  // }, [])
-
   useEffect(() => {
     let {comparator: alertsComparator, matches: alertsMatches} = getAlerts({comparatorMatches, matches})
-
-    // console.log(alertsComparator)
 
     if((alertsComparator.length || alertsMatches.length) && !alerts.length){
       dispatchAlerts({ type: ALERTS_ACTIONS.ADD, payload: [...alertsComparator, ...alertsMatches]})
@@ -92,7 +60,6 @@ const PartidosProvider = ({ children }) => {
         const isAlerted = alerts.find(alerted => alerted.name === alert.name)
         if(!isAlerted) {
           isNewAlert = true
-          // console.log([...alerts, alert])
           notificate(alert)
         }
       })
@@ -101,7 +68,6 @@ const PartidosProvider = ({ children }) => {
         const isAlerted = alerts.find(alerted => alerted.name === alert.name)
         if(!isAlerted) {
           isNewAlert = true
-          // console.log([...alerts, alert])
           notificate(alert)
         }
       })

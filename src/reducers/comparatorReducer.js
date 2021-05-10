@@ -25,8 +25,7 @@ export const comparatorReducer = (state, action) => {
       return newState
 
     case COMPARATOR_ACTIONS.IS_VISITED:
-      // console.log(action.payload)
-
+      
       return state.map(match => {
         if(match.name === action.payload) {
           return { ...match, visited: true}

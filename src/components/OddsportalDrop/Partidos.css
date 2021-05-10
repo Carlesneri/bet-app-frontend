@@ -16,3 +16,11 @@
 .up-arrow-container{
     z-index: 1;
 }
+.partidos-nav {
+    padding: .3rem 1rem;
+    display: flex;
+    justify-content: center;
+}
+.partidos-nav button {
+    min-width: 75px;
+}

@@ -35,7 +35,7 @@ hr{
     overflow-y: scroll;
 }
 .switch-routes{
-    width: 70%;
+    min-width: 70%;
     min-height: 90vh;
 }
 
@@ -45,7 +45,7 @@ hr{
     }
     .body-layout{
         flex-direction: column-reverse;
-        margin-top: 124px;
+        /* margin-top: 124px; */
         align-items: center;
     }
     .switch-routes:-webkit-scrollbar{

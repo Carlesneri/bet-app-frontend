@@ -4,7 +4,11 @@
   width: 100%;
   max-width: 500px;
   text-align: center;
-  border-bottom: 1px solid #bcbfc2;
+  /* border-bottom: 1px solid #bcbfc2; */
+  border-bottom: 1px solid #000;
+}
+.match:hover{
+  background-color: #222;
 }
 .match .title {
   font-size: 1.2rem;

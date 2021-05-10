@@ -128,12 +128,12 @@ class Calculator extends Component{
                         }
                     </div>
                     <div className="buttons">
-                        <button onClick={handleClean}>
+                        <button className="calc-button" onClick={handleClean}>
                             <div className="clean-icon">
                                 <FontAwesomeIcon icon={faBroom} />
                             </div>
                         </button>
-                        <button onClick={handleClick}>
+                        <button className="calc-button" onClick={handleClick}>
                             <div className="close-icon">
                                 <FontAwesomeIcon icon={faTimes} />
                             </div>

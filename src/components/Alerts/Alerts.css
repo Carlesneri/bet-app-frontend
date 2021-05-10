@@ -7,9 +7,11 @@
 }
 .alerts-block{
     padding: 10px;
+    overflow-y: auto;
 }
 .alerts-list{
     font-weight: 300;
+    overflow-y: auto;
 }
 h6{
     padding-left: 1em;
