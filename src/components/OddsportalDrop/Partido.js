@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback, useContext, useMemo } from 're
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faEye as fasEye } from '@fortawesome/free-solid-svg-icons'
 import { faEye as farEye } from '@fortawesome/free-regular-svg-icons'
+// import { faEye as fasEye, faBookmark as fasBookmark } from '@fortawesome/free-solid-svg-icons'
+// import { faEye as farEye, faBookmark as farBookmark } from '@fortawesome/free-regular-svg-icons'
 import './Partido.css'
 import AverHighRow from './AverHighRow'
 import { setCoefColor as setCoefColorUtil, eyeStyle } from '../../utils'
@@ -17,10 +19,15 @@ function Partido({ partido, lastVisit, setLastVisit }) {
 
   const wereVisited = partido.visited || false
   const visitedComparatorMatchesCookie = cookies['visited-comparator-matches'] || []
-  const cookieOpts = {
-    expires: new Date(Date.now() + 3*60*60*1000)
-  }
 
+
+  // visitedComparatorMatchesCookie.length > 60 && (visitedComparatorMatchesCookie = visitedComparatorMatchesCookie.slice(visitedComparatorMatchesCookie.length - 60, visitedComparatorMatchesCookie.length)
+  // )
+
+
+  const cookieOpts = {
+    expires: new Date(Date.now() + 10*60*60*1000)
+  }
 
   const NUM_CUOTAS = 9
 
@@ -60,8 +67,9 @@ function Partido({ partido, lastVisit, setLastVisit }) {
   const setIsVisited = () => {
     dispatchComparatorMatches({ type: COMPARATOR_ACTIONS.IS_VISITED, payload: partido.name})    
 
-    !wereVisited &&
-    setCookies('visited-comparator-matches', [...visitedComparatorMatchesCookie, partido.name], cookieOpts)
+    if(!wereVisited) {
+      setCookies('visited-comparator-matches', [...visitedComparatorMatchesCookie, partido.name], cookieOpts)
+    }
   }
 
   function toggleVisited() {
@@ -118,15 +126,21 @@ function Partido({ partido, lastVisit, setLastVisit }) {
   } = partido
 
   return (
-    <div className='partido card-bg' onClick={handleClickPartido} style={isLastVisited()}>
+    <div className='partido card-bg' style={isLastVisited()}>
       <div className='partido-title-op' style={titleStyle}>
         <div className="partido-title-eye" style={eyeStyle(visited)} onClick={toggleVisited} >
-          {visited ? 
+          {/* {
+            name === lastVisit ? 
+            <FontAwesomeIcon icon={fasBookmark} />
+            : <FontAwesomeIcon icon={farBookmark} />
+          } */}
+          {
+            visited ? 
             <FontAwesomeIcon icon={fasEye} />
             : <FontAwesomeIcon icon={farEye} />
           }
         </div>
-        <div className='partido-name-op'>
+        <div className='partido-name-op' onClick={handleClickPartido}>
           <a onClick={handleClickAnchor} href={url} target='_blank' rel='nofollow noopener noreferrer'>
             {name}
           </a>

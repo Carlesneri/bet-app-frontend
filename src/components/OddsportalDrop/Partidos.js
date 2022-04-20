@@ -15,8 +15,8 @@ const Partidos = () => {
 
   const [filteredPartidos, setFilteredPartidos] = useState(partidos)
   const [lastVisit, setLastVisit] = useState('')
-  const [cookies] = useCookies(['visited-comparator-matches'])
-  const [filtered, setFiltered] = useState(false)
+  const [cookies, setCookies] = useCookies(['visited-comparator-matches'])
+  const [filtered, setFiltered] = useState(true)
 
   useEffect(() => {
     const newFilteredPartidos = filtered
@@ -31,9 +31,8 @@ const Partidos = () => {
   }, [filtered, partidos, lastVisit])
 
   useEffect(() => {
+    const vistedPartidosCookie = cookies['visited-comparator-matches'] || []
     if (partidos.length > 0) {
-      const vistedPartidosCookie = cookies['visited-comparator-matches'] || []
-
       vistedPartidosCookie.length &&
         vistedPartidosCookie.forEach((match) => {
           dispatchComparatorMatches({
@@ -42,7 +41,12 @@ const Partidos = () => {
           })
         })
     }
-  }, [cookies, dispatchComparatorMatches, partidos.length])
+
+    if(vistedPartidosCookie.length > 60) {
+      setCookies('visited-comparator-matches', vistedPartidosCookie.slice(vistedPartidosCookie.length - 60, vistedPartidosCookie.length))
+    }
+  
+  }, [cookies, setCookies, dispatchComparatorMatches, partidos.length])
 
   filteredPartidos.sort((a, b) => {
     const aMax = Math.max(a.percent1, a.percent2, a.percent3)
@@ -56,7 +60,7 @@ const Partidos = () => {
     <>
       <nav className='partidos-nav'>
         <button onClick={() => setFiltered(!filtered)}>
-          {filtered ? 'not visited' : 'all'}
+          {filtered ? 'UNWATCHED' : 'ALL'}
         </button>
       </nav>
       {filteredPartidos.length ? (

@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import star from '../../images/star.png'
 import { NavLink } from 'react-router-dom';
 import './Nav.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCalculator} from '@fortawesome/free-solid-svg-icons'
 import Calculator from '../Calculator/Calculator';
+import { PartidosContext } from '../../PartidosContext';
 
 const Nav = () => {   
     const scrollTop = () => window.scrollTo(0, 0)
-    // const naviLinkElement = document.querySelectorAll('.navi-link')
-    // naviLinkElement.forEach( link => {
-    //     link.addEventListener('click', () => window.scrollTo(0, 0))
-    // })
+
+    const {matches, comparatorMatches} = useContext(PartidosContext)
     const [toolsStyle, setToolsStyle] = useState({display: 'none'})
     const displayValue = () => toolsStyle.display === 'none' ? 
     setToolsStyle({display: 'block'}) : setToolsStyle({display: 'none'})
@@ -29,6 +28,12 @@ const Nav = () => {
                         <NavLink to="/comparator" activeClassName="chosen">
                             <p>
                                 Comparator
+                                {comparatorMatches.some(match => !match.visited) &&
+                                <span>
+                                    💡
+                                </span>
+                                }
+
                             </p>
                         </NavLink>
                     </div>
@@ -36,6 +41,11 @@ const Nav = () => {
                         <NavLink to="/matches" activeClassName="chosen">
                             <p>
                                 Matches
+                                {matches.some(match => !match.visited) &&
+                                <span>
+                                    💡
+                                </span>
+                                }
                             </p>
                         </NavLink>
                     </div>

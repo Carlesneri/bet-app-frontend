@@ -14,8 +14,9 @@ const Match = ({ match, lastVisit, setLastVisit }) => {
 
   const wereVisited = match.visited || false
   const visitedMatchesCookie = cookies['visited-matches'] || []
+  
   const cookieOpts = {
-    expires: new Date(Date.now() + 3*60*60*1000)
+    expires: new Date(Date.now() + 10*60*60*1000)
   }
 
   const { dispatchMatches } = useContext(PartidosContext)
@@ -67,9 +68,9 @@ const Match = ({ match, lastVisit, setLastVisit }) => {
 
 
   return (
-    <table className="match" style={isLastVisited()} onClick={handleClickMatch}>
+    <table className="match" style={isLastVisited()}>
       <tbody>
-        <tr className="title">
+        <tr className="title" onClick={handleClickMatch}>
           <td className="match-title-eye" style={eyeStyle(match.visited)} onClick={toggleVisited} >
             {match.visited ? 
               <FontAwesomeIcon icon={fasEye} />

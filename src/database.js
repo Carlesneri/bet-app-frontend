@@ -142,6 +142,8 @@ export function getPlayerData(playerName, stateSetter) {
 }
 
 export function getTeamData(sport, player, stateSetter) {
+  console.log('getting team data', player)
+  
   db.child(`teams/${sport}/${player}`)
   .once("value", snapshot => {
     // console.log(snapshot.val())

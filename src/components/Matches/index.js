@@ -12,8 +12,9 @@ const Matches = () => {
   const { matches, dispatchMatches } = useContext(PartidosContext)
   const [cookies] = useCookies(['visited-comparator-matches'])
   const [lastVisit, setLastVisit] = useState('')
+  // const [recents, setRecents] = useState([])
   const [filteredPartidos, setFilteredPartidos] = useState(matches)
-  const [filtered, setFiltered] = useState(false)
+  const [filtered, setFiltered] = useState(true)
 
   useEffect(() => {
     const newFilteredPartidos = filtered ?
@@ -47,7 +48,7 @@ const Matches = () => {
     <>
       <nav className="partidos-nav">
         <button onClick={() => setFiltered(!filtered)}>
-          {filtered ? 'not visited' : 'all'}
+          {filtered ? 'UNWATCHED' : 'ALL'}
         </button>
       </nav>
       {filteredPartidos.length ? (
